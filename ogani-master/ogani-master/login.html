@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Đăng nhập</h2>
+    <form action="">
+      <div class="form-group">
+        <label for="username">Tên đăng nhập:</label>
+        <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập">
+      </div>
+      <div class="form-group">
+        <label for="password">Mật khẩu:</label>
+        <input type="password" id="password" name="password" placeholder="Nhập mật khẩu">
+      </div>
+      <input type="submit" onclick="signin()" value="Đăng nhập">
+      <input type="button" value="Đăng ký" onclick="location.href='register.html';">
+    </form>
+  </div>
+  <script src="js/login.js"></script>
+</body>
+</html>

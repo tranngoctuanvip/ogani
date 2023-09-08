@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Source">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ogani-master/ogani-master/Source/SlickNav-master.zip!/" />
+      <root url="jar://$PROJECT_DIR$/ogani-master/ogani-master/Source/bootstrap-4.4.1-dist.zip!/" />
+      <root url="jar://$PROJECT_DIR$/ogani-master/ogani-master/Source/OwlCarousel2-2.3.4.zip!/" />
+      <root url="jar://$PROJECT_DIR$/ogani-master/ogani-master/Source/font-awesome-4.7.0.zip!/" />
+      <root url="jar://$PROJECT_DIR$/ogani-master/ogani-master/Source/jquery-nice-select-1.1.0.zip!/" />
+      <root url="jar://$PROJECT_DIR$/ogani-master/ogani-master/Source/jquery-ui-1.12.1.zip!/" />
+      <root url="jar://$PROJECT_DIR$/ogani-master/ogani-master/Source/sass.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

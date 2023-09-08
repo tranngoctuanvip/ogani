@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b200c663-afa9-46f8-ba78-137724e8b926" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Common/Constant/Constant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Common/Mapper/Mapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Common/Mapper/PageMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Common/Response/Response.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Common/Response/ResponseData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Common/Response/ResponseDataStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Common/Response/ResponseDataTotal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Common/Response/ResponseError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Common/Utils/Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Config/createRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/AuthApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/BlogApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/CartApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/CategoryApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/OrderApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/ProductApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/StatisticalApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/UserApi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/DTO/BlogDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/DTO/CartDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/DTO/CategoryDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/DTO/ChangePassword.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/DTO/OrderDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/DTO/ProductDetailDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/DTO/ProductDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/DTO/RoleDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/DTO/Signin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/DTO/Signup.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/DTO/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Entity/Blog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Entity/Cart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Entity/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Entity/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Entity/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Entity/ProductDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Entity/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/OganiBeApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/BlogRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/CartRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/CategoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/OrderRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/ProductDetailRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Security/UserPrincical/UserPrinciple.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Security/UserPrincical/Userdetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Security/jwt/JwtEntryPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Security/jwt/JwtProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Security/jwt/JwtTokenFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/AuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/BlogService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/CartService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/CategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/AuthServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/BlogServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/CartServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/CategoryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/OrderServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/ProductDetailServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/ProductServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/StatisticalServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/ProductDetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/StatisticalService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/ogani_be/OganiBeApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="com.haulmont.jpb.JpaRepository" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2UaqFA3G0Bd9aOl6WhbTn6BpwI5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/DE_MO_THUC_TAP/ogani/ogani_BE&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.web.browsers&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;1f79e4f50fee229955a75106e79dd4c9&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="OganiBeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ogani_BE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.ogani_be.OganiBeApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b200c663-afa9-46f8-ba78-137724e8b926" name="Changes" comment="" />
+      <created>1693187932278</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1693187932278</updated>
+      <workItem from="1693187934284" duration="17913000" />
+      <workItem from="1693273137821" duration="14773000" />
+      <workItem from="1693359759158" duration="6364000" />
+      <workItem from="1693367193846" duration="2652000" />
+      <workItem from="1693886986841" duration="12779000" />
+      <workItem from="1693926627778" duration="2191000" />
+      <workItem from="1693965404204" duration="21308000" />
+      <workItem from="1694051122662" duration="25623000" />
+      <workItem from="1694138113858" duration="24564000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="application.properties" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/StatisticalApi.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
