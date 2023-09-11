@@ -72,7 +72,8 @@ public class SecurityConfig {
                 .and().csrf().disable();
        http.authorizeRequests().antMatchers("/blog/selectTop3",
                        "/product/getAll","/product/lastestProduct","/category/getAll","/auth/signin",
-                       "/auth/signup","/auth/logout","/auth/sendEmail","/auth/resetPassword","/images/**").permitAll()
+                       "/auth/signup","/auth/logout","/auth/sendEmail","/auth/resetPassword","/images/**",
+                       "/product/getProduct/**").permitAll()
 
                 .antMatchers("/blog/**","/product/**","/category/**","/productdetail/**","/auth/changePassword/**",
                         "/auth/getUser","/statistical/**")

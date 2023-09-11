@@ -20,6 +20,7 @@ public class ProductDetailServiceImpl implements ProductDetailService {
     private final Mapper mapper;
     @Override
     public ProductDetail create(String title, Long productId, String content) {
+        valid(title,content);
         ProductDetail productDetail = new ProductDetail();
         productDetail.setTitle(title);
         productDetail.setProductId(productId);
@@ -34,6 +35,7 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 
     @Override
     public ProductDetail update(String title, String content, Long id) {
+        valid(title,content);
         Optional<ProductDetail> productDetailOptional = productDetailRepository.findByProductIdAndDeleted(id,Constant.NOTDELETE);
         if (productDetailOptional.isEmpty()){
             throw new RuntimeException("Chi tiết sản phẩm không tồn tại");
@@ -56,5 +58,13 @@ public class ProductDetailServiceImpl implements ProductDetailService {
         ProductDetail productDetail = productDetailOptional.get();
         productDetail.setDeleteAt(LocalDateTime.now());
         productDetail.setDeleted(Constant.DELETE);
+    }
+    private void valid(String title, String content){
+        if (title == null){
+            throw new RuntimeException("Tiêu đề không được để trống");
+        }
+        if (content == null){
+            throw new RuntimeException("Nội dung không được để trống");
+        }
     }
 }

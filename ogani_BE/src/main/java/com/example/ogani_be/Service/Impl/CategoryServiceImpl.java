@@ -22,6 +22,7 @@ public class CategoryServiceImpl implements CategoryService {
     private final Mapper mapper;
     @Override
     public Category create(CategoryDto categoryDto) {
+        validate(categoryDto);
         Category category = new Category();
         category.setCode(categoryDto.getCode());
         category.setName(categoryDto.getName());
@@ -35,6 +36,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category update(CategoryDto categoryDto, Long id) {
+        validate(categoryDto);
         Optional<Category> categoryOptional = categoryRepository.findByIdAndDeleted(id,Constant.NOTDELETE);
         if (categoryOptional.isEmpty()){
             throw new RuntimeException("Không tồn tại danh mục");
@@ -52,5 +54,26 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> getAll() {
         var getAll = categoryRepository.findAll();
         return getAll;
+    }
+
+    @Override
+    public void delete(Long id) {
+        Optional<Category> optionalCategory = categoryRepository.findByIdAndDeleted(id,Constant.NOTDELETE);
+        if (optionalCategory.isEmpty()){
+            throw new RuntimeException("Không tồn tại danh mục");
+        }
+        Category category = optionalCategory.get();
+        category.setDeleteAt(LocalDateTime.now());
+        category.setDeleted(Constant.DELETE);
+        categoryRepository.save(category);
+    }
+
+    private void validate(CategoryDto categoryDto){
+        if (categoryDto.getCode() == null){
+            throw new RuntimeException("Mã code không được để trống!");
+        }
+        if (categoryDto.getName() == null){
+            throw new RuntimeException("Tên danh mục không được để trống");
+        }
     }
 }

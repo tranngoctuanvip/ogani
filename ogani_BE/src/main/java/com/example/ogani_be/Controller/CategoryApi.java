@@ -50,4 +50,15 @@ public class CategoryApi {
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }
+    @PostMapping("delete")
+    public ResponseEntity<?> delete(@Param("id") Long id){
+        try {
+            categoryService.delete(id);
+            return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
+                    .message("Delete Successfull").build(),HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+                    .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
+        }
+    }
 }

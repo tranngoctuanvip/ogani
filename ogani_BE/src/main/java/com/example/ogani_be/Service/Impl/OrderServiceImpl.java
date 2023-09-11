@@ -32,6 +32,7 @@ public class OrderServiceImpl implements OrderService {
     private final Mapper mapper;
     @Override
     public Order create(OrderDto orderDto) {
+        valid(orderDto);
         Order order = new Order();
         order.setCreateAt(LocalDateTime.now());
         order.setDeleted(Constant.NOTDELETE);
@@ -67,7 +68,6 @@ public class OrderServiceImpl implements OrderService {
                     throw new RuntimeException("Số lượng sản phẩm không đủ");
                 }
             }
-
         }
         return order;
     }
@@ -85,5 +85,16 @@ public class OrderServiceImpl implements OrderService {
             throw new RuntimeException("Không tồn tại đơn hàng");
         }
         orderRepository.removeById(id);
+    }
+    private void valid(OrderDto orderDto){
+        if (orderDto.getAddress() == null){
+            throw new RuntimeException("Địa chỉ không được để trống");
+        }
+        if (orderDto.getUserName() == null){
+            throw new RuntimeException("Tên không được để trống");
+        }
+        if (orderDto.getPhone() == null){
+            throw new RuntimeException("Số điện thoại không được để trống");
+        }
     }
 }
