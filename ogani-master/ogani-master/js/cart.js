@@ -17,7 +17,7 @@ function getUnpaid(callback){
 function deleteCart(id){
     var deleteCartApi = 'http://localhost:8088/cart/deleteCart?cartId=' + id;
     fetch(deleteCartApi,{
-        method : "POST"
+        method : 'POST'
     })
     .then(response => response.json())
     .then(data => {

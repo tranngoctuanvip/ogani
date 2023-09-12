@@ -2,13 +2,11 @@ package com.example.ogani_be.Service.Impl;
 
 import com.example.ogani_be.Common.Constant.Constant;
 import com.example.ogani_be.Common.Mapper.Mapper;
+import com.example.ogani_be.Common.Utils.Utils;
+import com.example.ogani_be.DTO.Deliver;
 import com.example.ogani_be.DTO.OrderDto;
-import com.example.ogani_be.Entity.Cart;
-import com.example.ogani_be.Entity.Order;
-import com.example.ogani_be.Entity.Product;
-import com.example.ogani_be.Repository.CartRepository;
-import com.example.ogani_be.Repository.OrderRepository;
-import com.example.ogani_be.Repository.ProductRepository;
+import com.example.ogani_be.Entity.*;
+import com.example.ogani_be.Repository.*;
 import com.example.ogani_be.Service.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +27,15 @@ public class OrderServiceImpl implements OrderService {
     private ProductRepository productRepository;
     @Autowired
     private CartRepository cartRepository;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private RoleRepository roleRepository;
     private final Mapper mapper;
     @Override
     public Order create(OrderDto orderDto) {
         valid(orderDto);
+        Utils.validatePhoneNumber(orderDto.getPhone());
         Order order = new Order();
         order.setCreateAt(LocalDateTime.now());
         order.setDeleted(Constant.NOTDELETE);
@@ -49,11 +52,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order update(Integer status, Long id) {
+    public Order update(Deliver deliver, Long id) {
         Optional<Order> optionalOrder = orderRepository.findByIdAndDeleted(id,Constant.NOTDELETE);
         Order order = optionalOrder.get();
         order.setUpdateBy(mapper.getUserId());
-        order.setStatus(status);
+        order.setDeliver(deliver.getDeliver());
+        order.setStatus(deliver.getStatus());
         orderRepository.save(order);
         for (int i=0;i<order.getCartList().size();i++){
             Optional<Cart> cartOptional = cartRepository.findByIdAndDeleted(order.getCartList().get(i).getId(),Constant.NOTDELETE);
@@ -74,8 +78,20 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Map<String, Object>> getAll() {
-        var getAll = orderRepository.getAll();
-        return getAll;
+        Optional<User> userOptional = userRepository.findByIdAndDeleted(mapper.getUserId(), Constant.NOTDELETE);
+        User user = userOptional.get();
+        var roleId = user.getRoleSet().stream().map(Role::getId).collect(Collectors.toList());
+        for (Long role : roleId){
+            Optional<Role> roleOptional = roleRepository.findById(role);
+            Role role1 = roleOptional.get();
+            if (role1.getCode().equals("ADMIN") || role1.getCode().equals("STAFF")){
+              return orderRepository.getAll();
+            }
+            else if (role1.getCode().equals("SHIPPER")){
+               return orderRepository.getAllByDeliver(mapper.getUserId());
+            }
+        }
+        return null;
     }
 
     @Override

@@ -34,4 +34,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "               join `user` u on u.id = ur.user_id \n" +
             "               where u.id = :id ",nativeQuery = true)
     List<Map<String,Object>> getRole(@Param("id") Long id);
+
+    @Override
+    Optional<User> findById(Long aLong);
 }

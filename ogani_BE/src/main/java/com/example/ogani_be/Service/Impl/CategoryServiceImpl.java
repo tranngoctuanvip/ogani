@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -66,6 +67,12 @@ public class CategoryServiceImpl implements CategoryService {
         category.setDeleteAt(LocalDateTime.now());
         category.setDeleted(Constant.DELETE);
         categoryRepository.save(category);
+    }
+
+    @Override
+    public List<Map<String, Object>> getByNameAndCode(String code, String name) {
+        var getNameAndCode = categoryRepository.getByNameAndCode(code,name);
+        return getNameAndCode;
     }
 
     private void validate(CategoryDto categoryDto){

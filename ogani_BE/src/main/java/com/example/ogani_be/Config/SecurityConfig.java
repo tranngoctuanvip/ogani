@@ -73,15 +73,15 @@ public class SecurityConfig {
        http.authorizeRequests().antMatchers("/blog/selectTop3",
                        "/product/getAll","/product/lastestProduct","/category/getAll","/auth/signin",
                        "/auth/signup","/auth/logout","/auth/sendEmail","/auth/resetPassword","/images/**",
-                       "/product/getProduct/**").permitAll()
+                       "/product/getProduct/**","/product/create/**","/category/getNameAndCode/**").permitAll()
 
                 .antMatchers("/blog/**","/product/**","/category/**","/productdetail/**","/auth/changePassword/**",
                         "/auth/getUser","/statistical/**")
                .hasAnyAuthority("ADMIN")
 
                .antMatchers("/blog/create/**","/blog/update/**",
-                       "/product/create/**","product/update/**","/category/create/**",
-                       "/category/update/**","/auth/changePassword","/blog/getBlog","/statistical/**")
+                       "product/update/**","/category/create/**",
+                        "/category/update/**","/auth/changePassword","/blog/getBlog","/statistical/**","/order/getAll/**")
                .hasAnyAuthority("STAFF")
 
                .antMatchers("/cart/create/**","/cart/deleteCart/**","/auth/changePassword")

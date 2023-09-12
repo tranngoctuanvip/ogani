@@ -61,4 +61,16 @@ public class CategoryApi {
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }
+    @GetMapping("getNameAndCode")
+    public ResponseEntity<?> getNameAndCode(@RequestParam(value = "code", required = false) String code,
+                                            @RequestParam(value = "name", required = false) String name){
+        try {
+            var getNameAndCode = categoryService.getByNameAndCode(code,name);
+            return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
+                    .message("Get All Successfull").data(getNameAndCode).build(),HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+                    .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
+        }
+    }
 }

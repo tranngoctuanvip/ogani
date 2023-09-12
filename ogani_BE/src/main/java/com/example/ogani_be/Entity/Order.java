@@ -41,6 +41,14 @@ public class Order {
     private String phone;
     @Column(name = "username")
     private String userName;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    private LocalDateTime startTime;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    private LocalDateTime endTime;
+    @Column(name = "deliver")
+    private Long deliver;
     @ManyToMany
     @JoinTable(name = "order_cart", joinColumns = @JoinColumn(name = "orderId"),
             inverseJoinColumns = @JoinColumn(name = "cartId"))

@@ -9,10 +9,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 @Component
 public class Utils {
     public static final Path CURRENT_FOLDER = Paths.get(System.getProperty("user.dir"));
-
+    private static final String PHONE_NUMBER_REGEX = "^\\d{10}$";
     public void isValid(MultipartFile image){
         String[] o = {".png",".JPEG","JPG","jpg"};
         boolean isvali = false;
@@ -38,5 +41,14 @@ public class Utils {
         }
         String req = "http://localhost:8088/" + imagePath.resolve(image.getOriginalFilename());
         return req.replace("\\","/");
+    }
+
+    public static void validatePhoneNumber(String phoneNumber) {
+        Pattern pattern = Pattern.compile(PHONE_NUMBER_REGEX);
+        Matcher matcher = pattern.matcher(phoneNumber);
+        if (!matcher.matches()){
+            throw new RuntimeException("Số điện thoại không đúng định dạng");
+        }
+        matcher.matches();
     }
 }

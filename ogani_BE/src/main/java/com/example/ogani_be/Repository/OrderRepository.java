@@ -33,7 +33,14 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             "               where o.deleted = 1\n" +
             "               group by o.username ,o.address, o.phone ,p.name ,c2.quality ,o.status ",nativeQuery = true)
     List<Map<String,Object>> getAll();
-
+    @Query(value = "select o.username, o.address, o.phone, p.name, c2.quality, sum(c2.quality * p.price) as total,o.status \n" +
+            "            from orders o\n" +
+            "                    join order_cart oc on oc.order_id = o.id\n" +
+            "                    join cart c2 on c2.id = oc.cart_id\n" +
+            "                    join product p on p.id = c2.product_id\n" +
+            "                    where o.deleted = 1 and o.deliver = :deliver\n" +
+            "                 group by o.username ,o.address, o.phone ,p.name ,c2.quality ,o.status",nativeQuery = true)
+    List<Map<String,Object>> getAllByDeliver(@Param("deliver") Long deliver);
     @Query(value = "select sum(o.status) as total,\n" +
             "              sum(CASE WHEN o.status = 1 THEN o.status ELSE 0 end) as unpaid,\n" +
             "              sum(CASE WHEN o.status = 2 THEN o.status ELSE 0 end) as paid\n" +
