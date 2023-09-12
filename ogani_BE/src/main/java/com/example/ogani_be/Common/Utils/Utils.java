@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 public class Utils {
     public static final Path CURRENT_FOLDER = Paths.get(System.getProperty("user.dir"));
     private static final String PHONE_NUMBER_REGEX = "^\\d{10}$";
+    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
     public void isValid(MultipartFile image){
         String[] o = {".png",".JPEG","JPG","jpg"};
         boolean isvali = false;
@@ -51,4 +52,14 @@ public class Utils {
         }
         matcher.matches();
     }
+
+    public static void validateEmail(String email) {
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+        if (!matcher.matches()){
+            throw new RuntimeException("Email không hợp lệ");
+        }
+        matcher.matches();
+    }
+
 }

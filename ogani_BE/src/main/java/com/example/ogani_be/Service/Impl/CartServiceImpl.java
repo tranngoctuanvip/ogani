@@ -2,8 +2,11 @@ package com.example.ogani_be.Service.Impl;
 
 import com.example.ogani_be.Common.Constant.Constant;
 import com.example.ogani_be.Common.Mapper.Mapper;
+import com.example.ogani_be.DTO.CartDto;
 import com.example.ogani_be.Entity.Cart;
+import com.example.ogani_be.Entity.Product;
 import com.example.ogani_be.Repository.CartRepository;
+import com.example.ogani_be.Repository.ProductRepository;
 import com.example.ogani_be.Service.CartService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +49,16 @@ public class CartServiceImpl implements CartService {
         cart1.setDeleteAt(LocalDateTime.now());
         cart1.setDeleted(Constant.DELETE);
         cartRepository.save(cart1);
+    }
+
+    @Override
+    public Cart update(CartDto cartDto, Long id) {
+        Optional<Cart> cartOptional = cartRepository.findByIdAndDeleted(id,Constant.NOTDELETE);
+        Cart cart = cartOptional.get();
+        cart.setQuality(cartDto.getQuantity());
+        cart.setUpdateBy(mapper.getUserId());
+        cart.setUpdateAt(LocalDateTime.now());
+        cartRepository.save(cart);
+        return cart;
     }
 }

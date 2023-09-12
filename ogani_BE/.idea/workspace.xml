@@ -5,31 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b200c663-afa9-46f8-ba78-137724e8b926" name="Changes" comment="chỉnh sửa file">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/VnpayApi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/DTO/Deliver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ogani-master/ogani-master/admin/product/formproduct.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ogani-master/ogani-master/admin/product/formproduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ogani-master/ogani-master/admin/product/formproduct.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ogani-master/ogani-master/admin/product/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ogani-master/ogani-master/admin/product/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ogani-master/ogani-master/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ogani-master/ogani-master/js/cart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Common/Utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Common/Utils/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/CategoryApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/CategoryApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/CategoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/OrderRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/CategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Config/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Controller/CategoryApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Controller/CategoryApi.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Entity/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Entity/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Repository/CategoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Repository/CategoryRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Service/CategoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Service/CategoryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Service/Impl/CategoryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Service/Impl/CategoryServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Service/Impl/OrderServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Service/Impl/OrderServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/AuthApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/AuthApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/DTO/CartDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/DTO/CartDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/AuthServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/CartServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +90,7 @@
       <workItem from="1694051122662" duration="25623000" />
       <workItem from="1694138113858" duration="24564000" />
       <workItem from="1694396692270" duration="24804000" />
-      <workItem from="1694483679202" duration="17469000" />
+      <workItem from="1694483679202" duration="20298000" />
     </task>
     <task id="LOCAL-00001" summary="chỉnh sửa file">
       <created>1694421215784</created>

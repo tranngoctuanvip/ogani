@@ -2,6 +2,7 @@ package com.example.ogani_be.Service.Impl;
 
 import com.example.ogani_be.Common.Constant.Constant;
 import com.example.ogani_be.Common.Mapper.Mapper;
+import com.example.ogani_be.Common.Utils.Utils;
 import com.example.ogani_be.DTO.*;
 import com.example.ogani_be.Entity.Role;
 import com.example.ogani_be.Entity.User;
@@ -46,6 +47,7 @@ public class AuthServiceImpl implements AuthService {
     private final JavaMailSender javaMailSender;
     @Override
     public User signup(Signup signup) {
+        Utils.validateEmail(signup.getEmail());
         User user = new User();
         Optional<User> optionalUser = userRepository.findByUserNameAndDeleted(signup.getUserName(), Constant.NOTDELETE);
         if (optionalUser.isPresent()){
@@ -91,6 +93,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public void sendOTP(String email) {
+        Utils.validateEmail(email);
         Optional<User> userOptional = userRepository.findByEmailAndDeleted(email,Constant.NOTDELETE);
         if(userOptional.isEmpty()){
             throw new RuntimeException("Email không tồn tại");

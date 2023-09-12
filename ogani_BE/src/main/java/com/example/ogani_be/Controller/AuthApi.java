@@ -36,7 +36,7 @@ public class AuthApi {
                     .message("Login Successfull").data(login).build(), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
-                    .message("Login failed").build(),HttpStatus.BAD_REQUEST);
+                    .message("Tài khoản hoặc mật khẩu không chính xác").build(),HttpStatus.BAD_REQUEST);
         }
     }
     @PostMapping("signup")
