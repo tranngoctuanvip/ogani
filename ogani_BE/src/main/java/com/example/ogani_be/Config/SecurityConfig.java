@@ -73,7 +73,8 @@ public class SecurityConfig {
        http.authorizeRequests().antMatchers("/blog/selectTop3",
                        "/product/getAll","/product/lastestProduct","/category/getAll","/auth/signin",
                        "/auth/signup","/auth/logout","/auth/sendEmail","/auth/resetPassword","/images/**",
-                       "/product/getProduct/**","/product/create/**","/category/getNameAndCode/**").permitAll()
+                       "/product/getProduct/**","/product/create/**","/category/getNameAndCode/**",
+                       "/product/delete/**","/product/update/**").permitAll()
 
                 .antMatchers("/blog/**","/product/**","/category/**","/productdetail/**","/auth/changePassword/**",
                         "/auth/getUser","/statistical/**")

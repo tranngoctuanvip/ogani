@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.springframework:spring-aop:5.3.30-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.3.30-SNAPSHOT/spring-aop-5.3.30-20230914.073922-31.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.3.30-SNAPSHOT/spring-aop-5.3.30-20230914.073922-31-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.3.30-SNAPSHOT/spring-aop-5.3.30-20230914.073922-31-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -167,6 +167,18 @@ public class AuthServiceImpl implements AuthService {
         return userDtoList;
     }
 
+    @Override
+    public void deleted(Long id) {
+        Optional<User> optionalUser = userRepository.findByIdAndDeleted(id,Constant.NOTDELETE);
+        if (optionalUser.isEmpty()){
+            throw new RuntimeException("Thông tin tài khoản không tồn tại");
+        }
+        User user = optionalUser.get();
+        user.setDeleted(Constant.DELETE);
+        user.setDeleteAt(LocalDateTime.now());
+        userRepository.save(user);
+    }
+
     private String generateOTP() {
          int OTP_LENGTH = 6;
         Random random = new Random();

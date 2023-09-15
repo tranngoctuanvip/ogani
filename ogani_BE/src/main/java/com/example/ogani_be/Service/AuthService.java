@@ -17,4 +17,5 @@ public interface AuthService {
     void resetPassword(String username, String OTP, String newpassword);
     void changePassword(ChangePassword chagePassword);
     List<UserDto> getAll(Pageable pageable);
+    void deleted(Long id);
 }

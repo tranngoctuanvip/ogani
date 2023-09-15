@@ -58,6 +58,7 @@ public class ProductDetailServiceImpl implements ProductDetailService {
         ProductDetail productDetail = productDetailOptional.get();
         productDetail.setDeleteAt(LocalDateTime.now());
         productDetail.setDeleted(Constant.DELETE);
+        productDetailRepository.save(productDetail);
     }
     private void valid(String title, String content){
         if (title == null){

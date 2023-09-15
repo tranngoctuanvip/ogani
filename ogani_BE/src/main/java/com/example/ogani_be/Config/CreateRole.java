@@ -8,7 +8,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 @Component
-public class createRole implements ApplicationListener<ContextRefreshedEvent> {
+public class CreateRole implements ApplicationListener<ContextRefreshedEvent> {
     @Autowired
     private RoleRepository roleRepository;
     @Override

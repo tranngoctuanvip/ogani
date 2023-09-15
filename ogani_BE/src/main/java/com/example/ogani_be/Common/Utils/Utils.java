@@ -17,7 +17,7 @@ public class Utils {
     public static final Path CURRENT_FOLDER = Paths.get(System.getProperty("user.dir"));
     private static final String PHONE_NUMBER_REGEX = "^\\d{10}$";
     private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
-    public void isValid(MultipartFile image){
+    public static void isValid(MultipartFile image){
         String[] o = {".png",".JPEG","JPG","jpg"};
         boolean isvali = false;
         for (String img : o){
@@ -30,7 +30,7 @@ public class Utils {
         }
     }
     @SneakyThrows
-    public String imageName(MultipartFile image){
+    public static String imageName(MultipartFile image){
         Path staticPath = Paths.get("static");
         Path imagePath = Paths.get("images");
         if(!Files.exists(Utils.CURRENT_FOLDER.resolve(staticPath).resolve(imagePath))){
@@ -61,5 +61,12 @@ public class Utils {
         }
         matcher.matches();
     }
+    public static void checkSize(MultipartFile file){
+        long maxSize =  500 * 1024; // Giới hạn dung lượng tối đa (500kb)
 
+        long fileSize = file.getSize();
+        if (fileSize > maxSize) {
+           throw new RuntimeException("Dung lượng ảnh vượt quá giới hạn.");
+        }
+    }
 }

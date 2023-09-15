@@ -6,6 +6,7 @@ import com.example.ogani_be.Common.Response.ResponseDataTotal;
 import com.example.ogani_be.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class ProductApi {
     @PostMapping("create")
     public ResponseEntity<?> create(@RequestParam("code") String code, @RequestParam("name") String name,
                                     @RequestParam MultipartFile image,@RequestParam float price,
-                                    @RequestParam Integer quantity,@RequestParam String content,@RequestParam List<Long> categoryId){
+                                    @RequestParam Integer quantity,@RequestParam String content,@RequestParam Long categoryId){
         try {
             var create = productService.create(code, name, image, price, quantity, content, categoryId);
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
@@ -71,6 +72,31 @@ public class ProductApi {
             var data = pages.getContent();
             return new ResponseEntity<>(ResponseDataTotal.builder().status(SUCCESS.name())
                     .message("Get All Successfull").data(data).total(total).build(), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+                    .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
+        }
+    }
+    @PostMapping("delete")
+    public ResponseEntity<?> delete(@Param("id") Long id){
+        try {
+            productService.delete(id);
+            return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
+                    .message("Delete Successfull").build(),HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+                    .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
+        }
+    }
+    @PutMapping("update")
+    public ResponseEntity<?> update(@RequestParam("code") String code, @RequestParam("name") String name,
+                                    @RequestParam MultipartFile image,@RequestParam float price,
+                                    @RequestParam Integer quantity,@RequestParam String content,
+                                    @RequestParam Long categoryId, @Param("id") Long id){
+        try {
+                var update = productService.update(code,name,image,price,quantity,content,categoryId,id);
+                return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
+                        .message("Update Successfull").data(update).build(),HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);

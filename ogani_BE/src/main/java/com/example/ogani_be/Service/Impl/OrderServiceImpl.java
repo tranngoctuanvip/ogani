@@ -54,9 +54,14 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order update(Deliver deliver, Long id) {
         Optional<Order> optionalOrder = orderRepository.findByIdAndDeleted(id,Constant.NOTDELETE);
+        if (optionalOrder.isEmpty()){
+            throw new RuntimeException("Đơn hàng không tồn tại");
+        }
         Order order = optionalOrder.get();
         order.setUpdateBy(mapper.getUserId());
         order.setDeliver(deliver.getDeliver());
+        order.setStartTime(deliver.getStartTime());
+        order.setEndTime(deliver.getEndTime());
         order.setStatus(deliver.getStatus());
         orderRepository.save(order);
         for (int i=0;i<order.getCartList().size();i++){

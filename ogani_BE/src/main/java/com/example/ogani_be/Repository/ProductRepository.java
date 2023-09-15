@@ -16,12 +16,12 @@ import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
+    List<Product> findByDeleted(Integer deleted);
     Optional<Product> findByIdAndDeleted(Long id, Integer deleted);
     @Transactional
     @Modifying
     @Query(value = "insert into product_category(category_id,product_id) values(:categoryId,:productId)",nativeQuery = true)
     void create(@Param("categoryId") Long categoryId, @Param("productId") Long productId);
-
     @Modifying
     @Transactional
     @Query(value = " update product_category set (category_id =:category_id) where product_id =:product_id ",nativeQuery = true)
@@ -29,7 +29,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query(value = "select p.image ,p.name, p.price from product p where p.deleted = 1" +
             " order by p.id desc limit 3",nativeQuery = true)
     List<Map<String,Object>> lastestProduct();
-
     @Query(value = " select p.id, p.image ,p.name ,p.price from product p \n" +
             "    where p.deleted = 1",nativeQuery = true)
     List<Map<String,Object>> getProduct(Pageable pageable);

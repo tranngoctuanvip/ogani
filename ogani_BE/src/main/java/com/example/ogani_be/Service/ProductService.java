@@ -9,11 +9,11 @@ import java.util.Map;
 
 public interface ProductService {
     Product create(String code, String name, MultipartFile image, float price, Integer quantity, String content,
-                   List<Long> categoryId);
+                   Long categoryId);
     List<Product> getAll();
     List<Map<String,Object>> lastestProduct();
     Product update(String code, String name, MultipartFile image, float price, Integer quantity, String content,
-                   List<Long> categoryId, Long id);
+                   Long categoryId, Long id);
     void delete(Long id);
     List<Map<String,Object>> getProduct(Pageable pageable);
 }

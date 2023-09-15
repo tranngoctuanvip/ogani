@@ -5,27 +5,28 @@
 </div>
 <form id="product-form" style="display: none;">
     <label for="product-code">Mã sản phẩm:</label>
-    <input type="text" id="product-code">
+    <input type="text" id="product-code" name="code">
   
     <label for="product-name">Tên sản phẩm:</label>
-    <input type="text" id="product-name">
+    <input type="text" id="product-name" name="name">
   
     <label for="product-image">Hình ảnh:</label>
-    <input type="file" id="product-image">
+    <input type="file" id="product-image" name="image">
 
     <label for="product-price">Gía:</label>
-    <input type="text" id="product-price">
+    <input type="text" id="product-price" name="price">
 
     <label for="product-quantily">Số lượng</label>
-    <input type="text" id="product-quantily">
+    <input type="text" id="product-quantily" name="quantity">
 
     <label for="product-description">Nội dung:</label>
-    <textarea id="product-description"></textarea>
+    <textarea id="product-description" name="content"></textarea>
 
     <label for="product-category">Danh mục</label>
     <select id="category">
       </select>  
-    <button id="button-btn" type="submit">Thêm sản phẩm</button>
+      
+    <button id="button-btn" type="submit" onclick="add()" >Thêm sản phẩm</button>
   </form>
 <table id="product-table1">
     <thead>
@@ -46,5 +47,5 @@
     <span id="current-page">1</span>
     <button id="next-button">Trang sau</button>
 </div>
-<script src="/admin/productAdmin.js"></script>
+<!-- <script src="/admin/productAdmin.js"></script> -->
 <script src="/admin/product/formproduct.js"></script>

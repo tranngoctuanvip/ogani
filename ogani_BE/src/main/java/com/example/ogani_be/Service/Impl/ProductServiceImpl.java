@@ -23,14 +23,14 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
     private final Mapper mapper;
-    private final Utils utils;
     private final ProductDetailServiceImpl productDetail;
     @Override
     public Product create(String code, String name, MultipartFile image, float price, Integer quantity, String content,
-                          List<Long> categoryId) {
+                          Long categoryId) {
+        valid(code,name,quantity,content,categoryId);
         Product product = new Product();
-        utils.isValid(image);
-        utils.imageName(image);
+        Utils.isValid(image);
+        Utils.checkSize(image);
         product.setCreateAt(LocalDateTime.now());
         product.setCode(code);
         product.setName(name);
@@ -39,18 +39,16 @@ public class ProductServiceImpl implements ProductService {
         product.setQuantity(quantity);
         product.setStatus(Constant.STATUS);
         product.setDeleted(Constant.NOTDELETE);
-        product.setImage(utils.imageName(image));
+        product.setImage(Utils.imageName(image));
         productRepository.save(product);
-        for (int i =0;i<categoryId.size();i++){
-            productRepository.create(categoryId.get(i), product.getId());
-        }
+        productRepository.create(categoryId, product.getId());
         productDetail.create(product.getName(), product.getId(),content);
         return product;
     }
 
     @Override
     public List<Product> getAll() {
-        var getAll = productRepository.findAll();
+        var getAll = productRepository.findByDeleted(Constant.NOTDELETE);
         return getAll;
     }
 
@@ -65,13 +63,15 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product update(String code, String name, MultipartFile image, float price, Integer quantity,
-                          String content, List<Long> categoryId, Long id) {
+                          String content, Long categoryId, Long id) {
+        valid(code,name,quantity,content,categoryId);
+        Utils.checkSize(image);
         Optional<Product> productOptional = productRepository.findByIdAndDeleted(id,Constant.NOTDELETE);
         if (productOptional.isEmpty()){
             throw new RuntimeException("Sản phẩm không tồn tại");
         }
         Product product = productOptional.get();
-        utils.isValid(image);
+        Utils.isValid(image);
         product.setUpdateAt(LocalDateTime.now());
         product.setCode(code);
         product.setName(name);
@@ -80,11 +80,9 @@ public class ProductServiceImpl implements ProductService {
         product.setQuantity(quantity);
         product.setStatus(Constant.STATUS);
         product.setDeleted(Constant.NOTDELETE);
-        product.setImage(utils.imageName(image));
+        product.setImage(Utils.imageName(image));
         productRepository.save(product);
-        for (int i =0;i<categoryId.size();i++){
-            productRepository.update(categoryId.get(i), product.getId());
-        }
+        productRepository.update(categoryId, product.getId());
         productDetail.update(product.getName(),content,product.getId());
         return product;
     }
@@ -103,5 +101,23 @@ public class ProductServiceImpl implements ProductService {
     public List<Map<String, Object>> getProduct(Pageable pageable) {
         var getProduct = productRepository.getProduct(pageable);
         return getProduct;
+    }
+    private void valid(String code, String name, Integer quantity, String content,
+                       Long categoryId) {
+        if (code == null) {
+            throw new RuntimeException("Mã không được để trống");
+        }
+        if (name == null) {
+            throw new RuntimeException("Tên không được để trống");
+        }
+        if (quantity == null) {
+            throw new RuntimeException("Số lượng không được để trống");
+        }
+        if (content == null) {
+            throw new RuntimeException("Nội dung không được để trống");
+        }
+        if (categoryId == null) {
+            throw new RuntimeException("Danh mục không được để trống");
+        }
     }
 }
