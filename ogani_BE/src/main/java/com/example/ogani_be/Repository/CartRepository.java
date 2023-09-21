@@ -16,4 +16,7 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
             "join product p2 on p2.id = c.product_id \n" +
             "where c.deleted =1 and c.status = 1",nativeQuery = true)
     List<Map<String,Object>> getUnpaidCart();
+    @Query(value = "select count(c.id) as unpaid from cart c where c.deleted = 1 and c.status = 1",nativeQuery = true)
+    List<Map<String,Object>> unpaid();
+    
 }

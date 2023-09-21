@@ -3,15 +3,13 @@ package com.example.ogani_be.Controller;
 import com.example.ogani_be.Common.Mapper.PageMapper;
 import com.example.ogani_be.Common.Response.ResponseData;
 import com.example.ogani_be.Common.Response.ResponseDataTotal;
+import com.example.ogani_be.Common.Response.ResponseError;
 import com.example.ogani_be.DTO.ChangePassword;
 import com.example.ogani_be.DTO.Signin;
 import com.example.ogani_be.DTO.Signup;
 import com.example.ogani_be.Service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,9 +33,8 @@ public class AuthApi {
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
                     .message("Login Successfull").data(login).build(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
-                    .message("Tài khoản hoặc mật khẩu không chính xác").build(),HttpStatus.BAD_REQUEST);
-        }
+        }            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+                .message("Tài khoản hoặc mật khẩu không chính xác").build(),HttpStatus.BAD_REQUEST);
     }
     @PostMapping("signup")
     private ResponseEntity<?> signup(@RequestBody Signup signup){
@@ -68,7 +65,7 @@ public class AuthApi {
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
                     .message("Send Email Successfull").build(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }
@@ -80,7 +77,7 @@ public class AuthApi {
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
                     .message("Reset Password Successfull").build(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }
@@ -91,7 +88,7 @@ public class AuthApi {
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
                     .message("Change Password Successfull").build(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }
@@ -109,7 +106,7 @@ public class AuthApi {
             return new ResponseEntity<>(ResponseDataTotal.builder().status(SUCCESS.name())
                     .message("Get All Successfull").data(data).total(total).build(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }

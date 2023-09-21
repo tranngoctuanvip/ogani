@@ -1,6 +1,7 @@
 package com.example.ogani_be.Controller;
 
 import com.example.ogani_be.Common.Response.ResponseData;
+import com.example.ogani_be.Common.Response.ResponseError;
 import com.example.ogani_be.DTO.CategoryDto;
 import com.example.ogani_be.Service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class CategoryApi {
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
                     .message("Create Successfull").data(create).build(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }
@@ -35,7 +36,7 @@ public class CategoryApi {
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
                     .message("Update Successfull").data(update).build(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }
@@ -46,7 +47,7 @@ public class CategoryApi {
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
                     .message("Get All Successfull").data(getAll).build(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }
@@ -57,7 +58,7 @@ public class CategoryApi {
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
                     .message("Delete Successfull").build(),HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }
@@ -69,7 +70,7 @@ public class CategoryApi {
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
                     .message("Get All Successfull").data(getNameAndCode).build(),HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }

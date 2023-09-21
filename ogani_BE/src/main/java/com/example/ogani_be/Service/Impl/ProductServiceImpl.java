@@ -47,9 +47,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAll() {
-        var getAll = productRepository.findByDeleted(Constant.NOTDELETE);
-        return getAll;
+    public List<Product> getNewProduct() {
+        var getNewProduct = productRepository.getNewProduct();
+        return getNewProduct;
     }
 
     @Override
@@ -98,10 +98,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Map<String, Object>> getProduct(Pageable pageable) {
-        var getProduct = productRepository.getProduct(pageable);
+    public List<Map<String, Object>> getProduct(String name, Integer categoryId, Pageable pageable) {
+        var getProduct = productRepository.getProduct(categoryId,name,pageable);
         return getProduct;
     }
+
+    @Override
+    public List<Map<String,Object>> findById(Long id) {
+        var findById = productRepository.findByIdProduct(id);
+        return findById;
+    }
+
     private void valid(String code, String name, Integer quantity, String content,
                        Long categoryId) {
         if (code == null) {

@@ -61,4 +61,20 @@ public class CartServiceImpl implements CartService {
         cartRepository.save(cart);
         return cart;
     }
+
+    @Override
+    public Cart updateStatus(Integer status, Long id) {
+        Optional<Cart> cartOptional = cartRepository.findByIdAndDeleted(id,Constant.NOTDELETE);
+        if (cartOptional.isEmpty()){
+            throw new RuntimeException("Giỏ hàng không tồn tại");
+        }
+        Cart cart = cartOptional.get();
+        return null;
+    }
+
+    @Override
+    public List<Map<String, Object>> unpaid() {
+        var unpaid = cartRepository.unpaid();
+        return unpaid;
+    }
 }

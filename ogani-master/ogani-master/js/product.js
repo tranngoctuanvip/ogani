@@ -1,11 +1,15 @@
 var productApiGetall = 'http://localhost:8088/product/getAll';
 var lastestProductApi = 'http://localhost:8088/product/lastestProduct';
-
+var unpaidApi = 'http://localhost:8088/cart/unpaid';
+var userId = sessionStorage.getItem('username');
 
 function start(){
     getProduct(function(res) {
         renderProduct(res?.data || [])
         selectProduct(res?.data || [])
+    });
+    unpaid(function(res){
+        selectUnpaid(res?.data || [])
     });
 }
 start();
@@ -18,22 +22,25 @@ function startLastestProduct(){
 startLastestProduct();
 
 function createCart(id){    
-    // console.log("id");
-    // var element = document.getElementById(id);
-    alert('Đã thêm vào giỏ hàng');
-    var cartCreateApi = 'http://localhost:8088/cart/create?productId=' + id;
-    fetch(cartCreateApi, {
-        method: 'POST'
-    })
-    .then(response => response.json())
-    .then(data => {
-      // Xử lý dữ liệu từ API
-      console.log(data);
-    })
-    .catch(error => {
-      // Xử lý lỗi
-      console.error(error);
-})
+    if(userId !== '' && userId !== null){
+        alert('Đã thêm vào giỏ hàng');
+        var cartCreateApi = 'http://localhost:8088/cart/create?productId=' + id;
+        fetch(cartCreateApi, {
+            method: 'POST'
+        })
+        .then(response => response.json())
+        .then(data => {
+          // Xử lý dữ liệu từ API
+          console.log(data);
+        })
+        .catch(error => {
+          // Xử lý lỗi
+          console.error(error);
+    })  
+    }
+    else{
+        alert('Bạn vui lòng đăng nhập trước khi thêm vào giỏ hàng');
+    }
 } 
 
 function getProduct(callback){
@@ -100,7 +107,21 @@ function selectProduct(data){
     selectProduct.innerHTML = htmls.join("");
 }
 
+function unpaid(callback){
+    fetch(unpaidApi)
+    .then(function(response){
+        return response.json();
+    })
+    .then(callback)
+}
 
+function selectUnpaid(data){
+    var selectUnpaids = document.querySelector('#unpaid');
+    var htmls = data.map(function(elem){
+        return `<i class="fa fa-shopping-bag"></i> <span>${elem.unpaid}</span>`;
+    }).join('');
+    selectUnpaids.innerHTML = htmls;
+}
 
 function performSignIn() {
     let headers = new Headers();

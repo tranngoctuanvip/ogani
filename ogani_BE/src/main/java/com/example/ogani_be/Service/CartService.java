@@ -11,4 +11,6 @@ public interface CartService {
     List<Map<String,Object>> getUnpaidCart();
     void delete(Long id);
     Cart update(CartDto cartDto,Long id);
+    Cart updateStatus(Integer status, Long id);
+    List<Map<String,Object>> unpaid();
 }

@@ -1,4 +1,9 @@
 /* Áp dụng các kiểu CSS để làm cho form trông đẹp hơn */
+main{
+  width: 500px;
+  height: 400px;
+  /* display: none; */
+}
 form {
     max-width: 400px;
     margin: 0 auto;

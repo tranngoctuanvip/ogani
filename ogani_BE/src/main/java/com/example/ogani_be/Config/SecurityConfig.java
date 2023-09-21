@@ -71,12 +71,13 @@ public class SecurityConfig {
                 .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
                 .and().csrf().disable();
        http.authorizeRequests().antMatchers("/blog/selectTop3",
-                       "/product/getAll","/product/lastestProduct","/category/getAll","/auth/signin",
+                       "/product/getAll","/product/lastestProduct","/category/getAll","/auth/signin/**",
                        "/auth/signup","/auth/logout","/auth/sendEmail","/auth/resetPassword","/images/**",
                        "/product/getProduct/**","/product/create/**","/category/getNameAndCode/**",
-                       "/product/delete/**","/product/update/**").permitAll()
+                       "/product/delete/**","/product/update/**","/payment/**","/product/findById/**",
+                       "/cart/deleteCart/**","/cart/getUnpaidCart","/cart/update/**","/blog/**","/cart/unpaid").permitAll()
 
-                .antMatchers("/blog/**","/product/**","/category/**","/productdetail/**","/auth/changePassword/**",
+                .antMatchers("/product/**","/category/**","/productdetail/**","/auth/changePassword/**",
                         "/auth/getUser","/statistical/**")
                .hasAnyAuthority("ADMIN")
 
@@ -85,7 +86,7 @@ public class SecurityConfig {
                         "/category/update/**","/auth/changePassword","/blog/getBlog","/statistical/**","/order/getAll/**")
                .hasAnyAuthority("STAFF")
 
-               .antMatchers("/cart/create/**","/cart/deleteCart/**","/auth/changePassword")
+               .antMatchers("/cart/create/**","/auth/changePassword")
                .hasAnyAuthority("USER")
 
                .antMatchers("/order/update/**","/order/getAll","/auth/changePassword").hasRole("SHIPPER")

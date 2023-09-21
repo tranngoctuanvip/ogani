@@ -3,6 +3,7 @@ package com.example.ogani_be.Controller;
 import com.example.ogani_be.Common.Mapper.PageMapper;
 import com.example.ogani_be.Common.Response.ResponseData;
 import com.example.ogani_be.Common.Response.ResponseDataTotal;
+import com.example.ogani_be.Common.Response.ResponseError;
 import com.example.ogani_be.Service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
@@ -50,7 +51,7 @@ public class BlogApi {
     }
     @GetMapping("getBlog")
     public ResponseEntity<?> getBlog(@RequestParam(defaultValue = "0") Integer page,
-                                     @RequestParam(defaultValue = "5") Integer size,
+                                     @RequestParam(defaultValue = "6") Integer size,
                                      @RequestParam(defaultValue = "desc") String sortType,
                                      @RequestParam(defaultValue = "id") String sortBy){
         try {
@@ -62,7 +63,7 @@ public class BlogApi {
             return new ResponseEntity<>(ResponseDataTotal.builder().status(SUCCESS.name())
                     .message("Get All Successfull").data(data).total(total).build(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }
@@ -73,7 +74,7 @@ public class BlogApi {
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
                     .message("Get All Successfull").data(selectTop3).build(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }
@@ -84,7 +85,7 @@ public class BlogApi {
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
                     .message("Delete Successfull").build(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }

@@ -1,6 +1,7 @@
 package com.example.ogani_be.Controller;
 
 import com.example.ogani_be.Common.Response.ResponseData;
+import com.example.ogani_be.Common.Response.ResponseError;
 import com.example.ogani_be.DTO.OrderDto;
 import com.example.ogani_be.Service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class OrderApi {
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
                     .message("Create Successfull").data(create).build(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }
@@ -34,7 +35,7 @@ public class OrderApi {
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
                     .message("Get All Successfull").data(getAll).build(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }

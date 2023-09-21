@@ -3495,3 +3495,36 @@ ol {
 		font-size: 24px;
 	}
 }
+
+.quantity {
+	display: flex;
+	align-items: center;
+	width: 120px;
+  }
+  
+#quantity-input {
+	width: 50px;
+	text-align: center;
+  }
+  
+  .minus-btn,
+  .plus-btn {
+	width: 30px;
+	height: 30px;
+	border: none;
+	background-color: #ccc;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+  }
+  
+  .minus-btn:hover,
+  .plus-btn:hover {
+	background-color: #aaa; 
+  }
+.page-link {
+	float: left;
+	border: #000;
+}
+/* .papage-link a{
+} */

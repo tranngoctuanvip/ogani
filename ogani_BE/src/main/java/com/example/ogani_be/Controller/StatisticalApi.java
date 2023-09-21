@@ -1,6 +1,7 @@
 package com.example.ogani_be.Controller;
 
 import com.example.ogani_be.Common.Response.ResponseData;
+import com.example.ogani_be.Common.Response.ResponseError;
 import com.example.ogani_be.Service.StatisticalService;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class StatisticalApi {
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
                     .message("Get All Successfull").data(sumOrder).build(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }

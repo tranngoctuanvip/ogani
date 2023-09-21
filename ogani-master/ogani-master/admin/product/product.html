@@ -1,6 +1,12 @@
+<link rel="stylesheet" href="./style.css">
 <div class="search-container">
-    <input type="text" id="search-input" placeholder="Tìm kiếm...">
-    <button id="search-button">Tìm kiếm</button>
+    <label for="name">Tên sản phẩm</label>
+    <input type="text" id="search-name" placeholder="Tìm kiếm...">
+    <label for="category"> Danh mục</label>
+    <select id="search-category">
+        
+    </select>  
+    <button id="search-button" onclick="search()">Tìm kiếm</button>
     <button id="add-button" onclick="toggleForm()">Thêm</button>
 </div>
 <form id="product-form" style="display: none;">
@@ -28,24 +34,26 @@
       
     <button id="button-btn" type="submit" onclick="add()" >Thêm sản phẩm</button>
   </form>
-<table id="product-table1">
-    <thead>
-        <tr>
-            <th style="width: 50px;">ID</th>
-            <th style="width: 200px;">Tên sản phẩm</th>
-            <th style="width: 200px; height: 150px;">Hình ảnh</th>
-            <th style="width: 100px;">Giá</th>
-            <th >Hành động</th>
-        </tr>
-    </thead>
-    <tbody id="product-table">
-        <!-- Dữ liệu sản phẩm sẽ được thêm vào đây bằng JavaScript -->
-    </tbody>
-</table>
+  <div class="table-container">
+    <table id="product-table1">
+        <thead>
+            <tr>
+                <th style="width: 50px;">ID</th>
+                <th style="width: 200px;">Tên sản phẩm</th>
+                <th style="width: 200px; height: 150px;">Hình ảnh</th>
+                <th style="width: 100px;">Giá</th>
+                <th >Hành động</th>
+            </tr>
+        </thead>
+        <tbody id="product-table">
+            <!-- Dữ liệu sản phẩm sẽ được thêm vào đây bằng JavaScript -->
+        </tbody>
+    </table>
+  </div>
 <div class="pagination">
-    <button id="prev-button">Trang trước</button>
+    <!-- <button id="prev-button">Trang trước</button>
     <span id="current-page">1</span>
-    <button id="next-button">Trang sau</button>
+    <button id="next-button">Trang sau</button> -->
 </div>
 <!-- <script src="/admin/productAdmin.js"></script> -->
 <script src="/admin/product/formproduct.js"></script>

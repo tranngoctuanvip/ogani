@@ -1,31 +1,33 @@
 <link rel="stylesheet" href="update.css">
 <main>
-    <form id="updateForm">
-        <label for="code">Mã sản phẩm:</label>
-        <input type="text" id="code" name="code" placeholder="Mã sản phẩm">
-    
-        <label for="name">Tên sản phẩm:</label>
-        <input type="text" id="name" name="name" placeholder="Tên sẩn phẩm">
-    
-        <label for="category">Danh mục:</label>
-        <select id="category">
-          
-        </select>
-    
-        <label for="image">Hình ảnh:</label>
-        <input type="file" id="image" name="image">
-    
-        <label for="price">Giá</label>
-        <input type="text" id="price" name="giá" placeholder="Giá">
-    
-        <label for="quantity">Số lượng</label>
-        <input type="text" id="quantity" name="quantity" placeholder="số lượng">
-    
-        <label for="content">Nội dung:</label>
-        <textarea id="content" name="content"></textarea>
-    
-        <button type="submit">Update</button>
-      </form>
-      <script src="update.js"></script>
+  <form id="updateForm" onclick="updateButton()">
+    <!-- <label for="code">Mã sản phẩm:</label>
+    <input type="text" id="code" name="code" placeholder="Mã sản phẩm"> -->
+
+    <label for="name">Tên sản phẩm:</label>
+    <input type="text" id="name" name="name" placeholder="Tên sẩn phẩm">
+
+    <!-- <label for="category">Danh mục:</label>
+    <select id="category">
+      
+    </select> -->
+
+    <!-- <label for="image">Hình ảnh:</label>
+    <img id="image1" src="" style="width: 150px; height: 100px; text-align:center" alt="Ảnh"/>
+    <input type="file" id="image"> -->
+
+    <label for="price">Giá</label>
+    <input type="text" id="price" name="price" placeholder="Giá">
+
+    <label for="quantity">Số lượng</label>
+    <input type="text" id="quantity" name="quantity" placeholder="số lượng">
+
+    <label for="content">Nội dung:</label>
+    <textarea id="content" name="content"></textarea>
+
+    <button type="submit">Update</button>
+  </form>
+</main>    
+      <script src="./update.js"></script>
       <!-- <script src="formproduct.js"></script> -->
-    </main>
+
