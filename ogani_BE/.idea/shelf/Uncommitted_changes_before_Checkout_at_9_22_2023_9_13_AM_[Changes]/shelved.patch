@@ -1,0 +1,34 @@
+Index: src/main/java/com/example/ogani_be/Config/Config.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/ogani_be/Config/Config.java b/src/main/java/com/example/ogani_be/Config/Config.java
+--- a/src/main/java/com/example/ogani_be/Config/Config.java	
++++ b/src/main/java/com/example/ogani_be/Config/Config.java	
+@@ -53,7 +53,7 @@
+         return digest;
+     }
+ 
+-    Util for VNPAY
++//    Util for VNPAY
+     public static String hashAllFields(Map fields) {
+         List fieldNames = new ArrayList(fields.keySet());
+         Collections.sort(fieldNames);
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -95,7 +95,7 @@
+       <workItem from="1695174008962" duration="11168000" />
+       <workItem from="1695260210900" duration="19069000" />
+       <workItem from="1695291608714" duration="674000" />
+-      <workItem from="1695347104826" duration="861000" />
++      <workItem from="1695347104826" duration="1444000" />
+     </task>
+     <task id="LOCAL-00001" summary="chỉnh sửa file">
+       <created>1694421215784</created>

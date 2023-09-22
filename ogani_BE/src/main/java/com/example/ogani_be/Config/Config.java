@@ -53,7 +53,7 @@ public class Config {
         return digest;
     }
 
-    Util for VNPAY
+//    Util for VNPAY
     public static String hashAllFields(Map fields) {
         List fieldNames = new ArrayList(fields.keySet());
         Collections.sort(fieldNames);
