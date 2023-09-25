@@ -27,9 +27,17 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Transactional
     @Query(value = " update product_category set (category_id =:category_id) where product_id =:product_id ",nativeQuery = true)
     void update(@Param("category_id") Long category_id, @Param("product_id") Long product_id);
-    @Query(value = "select p.image ,p.name, p.price from product p where p.deleted = 1" +
-            " order by p.id desc limit 3",nativeQuery = true)
+    @Query(value = "select p.image ,p.name ,p.price from product p\n" +
+            "                join product_category pc on pc.product_id = p.id \n" +
+            "                join category c2 on c2.id = pc.category_id \n" +
+            "                where p.deleted = 1 order by p.id desc limit 3",nativeQuery = true)
     List<Map<String,Object>> lastestProduct();
+
+    @Query(value = "select p.image ,p.name ,p.price from product p\n" +
+            "                join product_category pc on pc.product_id = p.id \n" +
+            "                join category c2 on c2.id = pc.category_id \n" +
+            "                where p.deleted = 1 order by p.id asc limit 3",nativeQuery = true)
+    List<Map<String,Object>> topRatedProducts();
     @Query(value = "select p.id, p.image ,p.name ,p.price \n" +
             "               from product p join product_category pc on pc.product_id = p.id \n" +
             "             where p.deleted = 1 \n" +

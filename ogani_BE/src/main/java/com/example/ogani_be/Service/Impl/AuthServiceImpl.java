@@ -28,7 +28,6 @@ import javax.mail.internet.MimeMessage;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -143,16 +142,16 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public List<UserDto> getAll(Pageable pageable) {
+    public List<UserDto> getAll(String name, Pageable pageable) {
         List<UserDto> userDtoList = new ArrayList<>();
-        var userList = userRepository.getAll(pageable);
+        var userList = userRepository.getAll(name,pageable);
         for (Map<String,Object> user : userList){
             BigInteger bigIntegerValue = (BigInteger) user.get("id");
             Long id = bigIntegerValue.longValue();
             UserDto userDto = new UserDto();
             userDto.setId(id);
             userDto.setStatus((Integer) user.get("status"));
-            userDto.setEmail((String) user.get("email"));
+            userDto.setName((String) user.get("name"));
             userDto.setUsername((String) user.get("user_name"));
             var roleId = userRepository.getRole(id);
             List<RoleDto> roleDtoList = new ArrayList<>();

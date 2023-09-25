@@ -75,10 +75,11 @@ public class SecurityConfig {
                        "/auth/signup","/auth/logout","/auth/sendEmail","/auth/resetPassword","/images/**",
                        "/product/getProduct/**","/product/create/**","/category/getNameAndCode/**",
                        "/product/delete/**","/product/update/**","/payment/**","/product/findById/**",
-                       "/cart/deleteCart/**","/cart/getUnpaidCart","/cart/update/**","/blog/**","/cart/unpaid").permitAll()
+                       "/cart/deleteCart/**","/cart/getUnpaidCart","/cart/update/**","/blog/**","/cart/unpaid",
+                       "/product/topRatedProduct","/cart/create/**","/auth/getUser").permitAll()
 
                 .antMatchers("/product/**","/category/**","/productdetail/**","/auth/changePassword/**",
-                        "/auth/getUser","/statistical/**")
+                        "/statistical/**")
                .hasAnyAuthority("ADMIN")
 
                .antMatchers("/blog/create/**","/blog/update/**",
@@ -86,7 +87,7 @@ public class SecurityConfig {
                         "/category/update/**","/auth/changePassword","/blog/getBlog","/statistical/**","/order/getAll/**")
                .hasAnyAuthority("STAFF")
 
-               .antMatchers("/cart/create/**","/auth/changePassword")
+               .antMatchers("/auth/changePassword")
                .hasAnyAuthority("USER")
 
                .antMatchers("/order/update/**","/order/getAll","/auth/changePassword").hasRole("SHIPPER")

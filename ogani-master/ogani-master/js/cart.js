@@ -1,8 +1,12 @@
 var getUnpaidCartApi = 'http://localhost:8088/cart/getUnpaidCart';
+var unpaidApi = 'http://localhost:8088/cart/unpaid';
 function start(){
     getUnpaid(function(res){
         getUnpaidCart(res?.data || [])
     });
+    unpaid(function(res){
+        selectUnpaid(res?.data || [])
+    })
 }
 start();
 
@@ -98,7 +102,24 @@ function plus(){
         quantityInput.value = currentValue + 1;
         });
 }
-    
+ 
+
+function unpaid(callback){
+    fetch(unpaidApi)
+    .then(function(response){
+        return response.json();
+    })
+    .then(callback)
+}
+
+function selectUnpaid(data){
+    var selectUnpaids = document.querySelector('#unpaid');
+    var htmls = data.map(function(elem){
+        return `<i class="fa fa-shopping-bag"></i> <span>${elem.unpaid}</span>`;
+    }).join('');
+    selectUnpaids.innerHTML = htmls;
+}
+
 
 // function statusByid(id,quality){
 //         var data = {

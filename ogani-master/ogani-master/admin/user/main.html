@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Switch Main Content Example</title>
+    <style>
+        /* CSS cho phần main */
+        main {
+            padding: 20px;
+        }
+        
+        .content {
+            display: none;
+        }
+        
+        .active {
+            display: block;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var links = document.querySelectorAll("a[data-target]");
+            var main = document.querySelector("main");
+            
+            // Hiển thị nội dung ban đầu
+            showContent(links[0].dataset.target);
+            
+            // Xử lý sự kiện khi nhấp vào liên kết
+            for (var i = 0; i < links.length; i++) {
+                links[i].addEventListener("click", function(event) {
+                    event.preventDefault();
+                    var target = this.dataset.target;
+                    showContent(target);
+                });
+            }
+            
+            // Hiển thị nội dung tương ứng với target
+            function showContent(target) {
+                var contents = document.getElementsByClassName("content");
+                for (var i = 0; i < contents.length; i++) {
+                    contents[i].classList.remove("active");
+                }
+                document.getElementById(target).classList.add("active");
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Switch Main Content Example</h1>
+    
+    <!-- Liên kết để chuyển đổi nội dung -->
+    <nav>
+        <a href="#" data-target="content1">Content 1</a>
+        <a href="#" data-target="content2">Content 2</a>
+        <a href="#" data-target="content3">Content 3</a>
+    </nav>
+    
+    <!-- Phần main -->
+    <main>
+        <!-- Nội dung 1 -->
+        <div id="content1" class="content">
+            <h2>Content 1</h2>
+            <p>This is the content for section 1.</p>
+        </div>
+        
+        <!-- Nội dung 2 -->
+        <div id="content2" class="content">
+            <h2>Content 2</h2>
+            <p>This is the content for section 2.</p>
+        </div>
+        
+        <!-- Nội dung 3 -->
+        <div id="content3" class="content">
+            <h2>Content 3</h2>
+            <p>This is the content for section 3.</p>
+        </div>
+    </main>
+
+</body>
+</html>

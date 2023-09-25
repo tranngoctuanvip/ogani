@@ -59,14 +59,24 @@ public class ProductApi {
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }
+    @GetMapping("topRatedProduct")
+    public ResponseEntity<?> topRatedProduct(){
+        try {
+            var topRatedProducts = productService.topRatedProducts();
+            return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
+                    .message("Get All Successfull").data(topRatedProducts).build(), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
+                    .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
+        }
+    }
     @GetMapping("getProduct")
     public ResponseEntity<?> getProduct(@RequestParam(defaultValue = "0") Integer page,
                                         @RequestParam(defaultValue = "6") Integer size,
                                         @RequestParam(defaultValue = "desc") String sortType,
                                         @RequestParam(defaultValue = "id") String sortBy,
                                         @Param("categoryId") Integer categoryId,
-                                        @Param("name") String name
-                                        ){
+                                        @Param("name") String name){
         try {
             var pageable = pageMapper.pageable(page,size,sortType,sortBy);
             var getProduct = productService.getProduct(name,categoryId,pageable);

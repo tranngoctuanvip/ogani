@@ -63,7 +63,6 @@ public class Utils {
     }
     public static void checkSize(MultipartFile file){
         long maxSize =  500 * 1024; // Giới hạn dung lượng tối đa (500kb)
-
         long fileSize = file.getSize();
         if (fileSize > maxSize) {
            throw new RuntimeException("Dung lượng ảnh vượt quá giới hạn.");

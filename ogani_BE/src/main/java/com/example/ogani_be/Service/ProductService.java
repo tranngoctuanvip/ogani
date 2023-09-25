@@ -17,4 +17,5 @@ public interface ProductService {
     void delete(Long id);
     List<Map<String,Object>> getProduct(String name, Integer categoryId, Pageable pageable);
     List<Map<String,Object>> findById(Long id);
+    List<Map<String, Object>> topRatedProducts();
 }

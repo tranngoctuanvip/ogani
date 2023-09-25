@@ -8,7 +8,7 @@ import java.util.List;
 public class UserDto {
     private Long id;
     private String username;
-    private String email;
+    private String name;
     private Integer status;
     private List<RoleDto> roleDtos;
 }

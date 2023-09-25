@@ -126,19 +126,19 @@ function getData(data){
         <td>${elem.price}</td>
         <td>
             <div class="actions">
-                <button id="updateButton-${elem.id}">Sửa</button>
+                <button id="openBtn" onclick="openBtns()">Sửa</button>
                 <button id="${elem.id}" onclick="return deleted(this.id)">Xóa</button>
             </div>
         </td></tr>`
     }).join('');
     listAllProduct1.innerHTML = htmls;
     // Thêm sự kiện lắng nghe click cho các nút Sửa
-  data.forEach(function (elem) {
-    var updateButton = document.getElementById(`updateButton-${elem.id}`);
-    updateButton.addEventListener('click', function () {
-      redirectToUpdatePage(elem.id);
-    });
-  })
+  // data.forEach(function (elem) {
+  //   var updateButton = document.getElementById(`updateButton-${elem.id}`);
+  //   updateButton.addEventListener('click', function () {
+  //     redirectToUpdatePage(elem.id);
+  //   });
+  // })
 }
 
 function search() {
@@ -222,4 +222,72 @@ function deleted(id){
     })
     alert('Đã xóa thành công!');
   }
+}
+
+function openBtns(){
+  document.addEventListener("DOMContentLoaded", function() {
+    var modal = document.createElement("div");
+    modal.classList.add("modal");
+    
+    var modalContent = document.createElement("div");
+    modalContent.classList.add("modal-content");
+    
+    var closeBtn = document.createElement("span");
+    closeBtn.classList.add("close");
+    closeBtn.innerHTML = "&times;";
+    
+    var form = document.createElement("form");
+    form.id = "myForm";
+    form.method = "post";
+    
+    var nameLabel = document.createElement("label");
+    nameLabel.textContent = "Name:";
+    
+    var nameInput = document.createElement("input");
+    nameInput.type = "text";
+    nameInput.name = "name";
+    nameInput.required = true;
+    
+    var emailLabel = document.createElement("label");
+    emailLabel.textContent = "Email:";
+    
+    var emailInput = document.createElement("input");
+    emailInput.type = "email";
+    emailInput.name = "email";
+    emailInput.required = true;
+    
+    var submitBtn = document.createElement("input");
+    submitBtn.type = "submit";
+    submitBtn.value = "Submit";
+    
+    form.appendChild(nameLabel);
+    form.appendChild(nameInput);
+    form.appendChild(emailLabel);
+    form.appendChild(emailInput);
+    form.appendChild(submitBtn);
+    
+    modalContent.appendChild(closeBtn);
+    modalContent.appendChild(form);
+    
+    modal.appendChild(modalContent);
+    
+    document.body.appendChild(modal);
+  
+    // Hiển thị cửa sổ form khi nhấn nút "Open Form"
+      var openBtn = document.getElementById("openBtn");
+      openBtn.addEventListener("click", function() {
+          modal.style.display = "block";
+      });
+    
+    // Đóng cửa sổ form khi nhấn nút "Close" hoặc click bên ngoài form
+    closeBtn.addEventListener("click", function() {
+        modal.style.display = "none";
+    });
+    
+    window.addEventListener("click", function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    })
+  });
 }

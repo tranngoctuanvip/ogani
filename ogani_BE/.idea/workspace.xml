@@ -5,7 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b200c663-afa9-46f8-ba78-137724e8b926" name="Changes" comment="chỉnh sửa file">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Config/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ogani-master/ogani-master/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../ogani-master/ogani-master/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ogani-master/ogani-master/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ogani-master/ogani-master/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ogani-master/ogani-master/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ogani-master/ogani-master/js/cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ogani-master/ogani-master/js/product.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ogani-master/ogani-master/js/product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ogani-master/ogani-master/js/product2.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ogani-master/ogani-master/js/product2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ogani-master/ogani-master/shop-grid.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ogani-master/ogani-master/shop-grid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ogani-master/ogani-master/shoping-cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ogani-master/ogani-master/shoping-cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Common/Utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Common/Utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/AuthApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/AuthApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/ProductApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Controller/ProductApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/DTO/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/DTO/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/AuthServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Common/Utils/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Common/Utils/Utils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Config/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Config/Config.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Controller/AuthApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Controller/AuthApi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Controller/ProductApi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Controller/ProductApi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/DTO/UserDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/DTO/UserDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Repository/ProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Repository/ProductRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Service/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Service/AuthService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Service/Impl/AuthServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Service/Impl/AuthServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Service/Impl/ProductServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Service/Impl/ProductServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/ogani_be/Service/ProductService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +132,7 @@
       <workItem from="1695260210900" duration="19069000" />
       <workItem from="1695291608714" duration="674000" />
       <workItem from="1695347104826" duration="861000" />
+      <workItem from="1695606486547" duration="3266000" />
     </task>
     <task id="LOCAL-00001" summary="chỉnh sửa file">
       <created>1694421215784</created>
@@ -108,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694421215784</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="chỉnh sửa file">
+      <created>1695349075440</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1695349075440</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,15 +173,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="chỉnh sửa file" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/ogani_be/Service/Impl/CategoryServiceImpl.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="e" />

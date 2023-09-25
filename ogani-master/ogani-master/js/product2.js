@@ -6,14 +6,14 @@ var sortType = 'desc';
 var sortBy = 'id'
 function start(){
     getProduct(function(res) {
+      getProducts1(res?.data || []);
       const total = res.total;
-      getProducts1(res?.data || [])
       listPage(currentPage,productsPerPage,total);
       // changePage();
     });
-    getSale(function(res){
-      sale(res?.data || [])
-    })
+    // getSale(function(res){
+    //   sale(res?.data || [])
+    // })
     
 }
 start();
@@ -25,11 +25,8 @@ function getProduct(callback){
     fetch(url)
     .then(function(response){
         return response.json();
-    }).then(function(data){
-      callback(data);
     })
     .then(callback);
-
 }
 
 function getSale(callback){

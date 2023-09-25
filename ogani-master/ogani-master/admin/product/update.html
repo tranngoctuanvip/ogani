@@ -1,20 +1,21 @@
 <link rel="stylesheet" href="update.css">
-<main>
-  <form id="updateForm" onclick="updateButton()">
-    <!-- <label for="code">Mã sản phẩm:</label>
-    <input type="text" id="code" name="code" placeholder="Mã sản phẩm"> -->
+<div class="modal-content">
+  <form id="updateForm">
+    <span class="close" ></span>
+    <label for="code">Mã sản phẩm:</label>
+    <input type="text" id="code" name="code" placeholder="Mã sản phẩm">
 
     <label for="name">Tên sản phẩm:</label>
     <input type="text" id="name" name="name" placeholder="Tên sẩn phẩm">
 
-    <!-- <label for="category">Danh mục:</label>
+    <label for="category">Danh mục:</label>
     <select id="category">
       
-    </select> -->
+    </select>
 
-    <!-- <label for="image">Hình ảnh:</label>
+    <label for="image">Hình ảnh:</label>
     <img id="image1" src="" style="width: 150px; height: 100px; text-align:center" alt="Ảnh"/>
-    <input type="file" id="image"> -->
+    <input type="file" id="image">
 
     <label for="price">Giá</label>
     <input type="text" id="price" name="price" placeholder="Giá">
@@ -25,9 +26,9 @@
     <label for="content">Nội dung:</label>
     <textarea id="content" name="content"></textarea>
 
-    <button type="submit">Update</button>
+    <button type="submit" style="margin-top: 10px; margin-left: 130px;">Update</button>
   </form>
-</main>    
+</div>     
       <script src="./update.js"></script>
       <!-- <script src="formproduct.js"></script> -->
 

@@ -96,10 +96,11 @@ public class AuthApi {
     private ResponseEntity<?> getUser(@RequestParam(defaultValue = "0") Integer page,
                                       @RequestParam(defaultValue = "5") Integer size,
                                       @RequestParam(defaultValue = "desc") String sortType,
-                                      @RequestParam(defaultValue = "id") String sortBy){
+                                      @RequestParam(defaultValue = "id") String sortBy,
+                                      @RequestParam(value = "name",required = false) String name){
         try{
             var pageable = pageMapper.pageable(page,size,sortType,sortBy);
-            var getAll =authService.getAll(pageable);
+            var getAll =authService.getAll(name,pageable);
             var pageUser = new PageImpl<>(getAll);
             var data = pageUser.getContent();
             var total = pageUser.getTotalElements();

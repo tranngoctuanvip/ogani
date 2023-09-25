@@ -1,19 +1,15 @@
-<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="user.css">
 <div class="search-container">
-    <label for="name">Tên sản phẩm</label>
+    <label for="name">Tên nhân viên</label>
     <input type="text" id="search-name" placeholder="Tìm kiếm...">
-    <label for="category"> Danh mục</label>
-    <select id="search-category">
-        
-    </select>  
     <button id="search-button" onclick="search()">Tìm kiếm</button>
-    <button id="add-button" onclick="toggleForm()">Thêm</button>
+    <button id="add-button" onclick="toggleForm()">Thêm tài khoản</button>
 </div>
 <form id="product-form" style="display: none;">
-    <label for="product-code">Mã sản phẩm:</label>
+    <label for="product-code">Mã người dùng:</label>
     <input type="text" id="product-code" name="code">
   
-    <label for="product-name">Tên sản phẩm:</label>
+    <label for="product-name">Tên ng:</label>
     <input type="text" id="product-name" name="name">
   
     <label for="product-image">Hình ảnh:</label>
@@ -39,14 +35,15 @@
         <thead>
             <tr>
                 <th style="width: 50px;">STT</th>
-                <th style="width: 200px;">Tên sản phẩm</th>
-                <th style="width: 200px; height: 150px;">Hình ảnh</th>
-                <th style="width: 100px;">Giá</th>
+                <th style="width: 200px;">Mã đăng nhập</th>
+                <th style="width: 200px;">Tên người dùng</th>
+                <th style="width: 200px;">Chức vụ</th>
+                <th style="width: 200px;">Trạng thái</th>
                 <th >Hành động</th>
             </tr>
         </thead>
-        <tbody id="product-table">
-            <!-- Dữ liệu sản phẩm sẽ được thêm vào đây bằng JavaScript -->
+        <tbody id="user-table">
+            <!-- Dữ liệu user sẽ được thêm vào đây bằng JavaScript -->
         </tbody>
     </table>
   </div>
@@ -55,6 +52,4 @@
     <span id="current-page">1</span>
     <button id="next-button">Trang sau</button> -->
 </div>
-<!-- <script src="/admin/productAdmin.js"></script> -->
-<script src="/admin/product/formproduct.js"></script>
-<!-- <script src="/update.js"></script> -->
+<script src="user.js"></script>

@@ -109,6 +109,12 @@ public class ProductServiceImpl implements ProductService {
         return findById;
     }
 
+    @Override
+    public List<Map<String, Object>> topRatedProducts() {
+        var topRatedProducts = productRepository.topRatedProducts();
+        return topRatedProducts;
+    }
+
     private void valid(String code, String name, Integer quantity, String content,
                        Long categoryId) {
         if (code == null) {
