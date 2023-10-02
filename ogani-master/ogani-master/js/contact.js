@@ -31,5 +31,4 @@ function getMessage(){
         else{
             alert('Bạn chưa đăng nhập');
         }
-    
-git 
+    }
