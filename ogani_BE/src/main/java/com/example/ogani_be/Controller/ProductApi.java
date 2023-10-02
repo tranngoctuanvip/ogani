@@ -101,9 +101,9 @@ public class ProductApi {
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }
-    @PutMapping("update")
+    @PostMapping("update")
     public ResponseEntity<?> update(@RequestParam("code") String code, @RequestParam("name") String name,
-                                    @RequestParam MultipartFile image,@RequestParam float price,
+                                    @RequestParam(required = false) MultipartFile image,@RequestParam float price,
                                     @RequestParam Integer quantity,@RequestParam String content,
                                     @RequestParam Long categoryId, @Param("id") Long id){
         try {

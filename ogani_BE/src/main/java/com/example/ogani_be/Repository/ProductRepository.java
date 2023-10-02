@@ -25,18 +25,17 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     void create(@Param("categoryId") Long categoryId, @Param("productId") Long productId);
     @Modifying
     @Transactional
-    @Query(value = " update product_category set (category_id =:category_id) where product_id =:product_id ",nativeQuery = true)
+    @Query(value = " update product_category set category_id =:category_id where product_id =:product_id ",nativeQuery = true)
     void update(@Param("category_id") Long category_id, @Param("product_id") Long product_id);
     @Query(value = "select p.image ,p.name ,p.price from product p\n" +
             "                join product_category pc on pc.product_id = p.id \n" +
             "                join category c2 on c2.id = pc.category_id \n" +
             "                where p.deleted = 1 order by p.id desc limit 3",nativeQuery = true)
     List<Map<String,Object>> lastestProduct();
-
     @Query(value = "select p.image ,p.name ,p.price from product p\n" +
             "                join product_category pc on pc.product_id = p.id \n" +
             "                join category c2 on c2.id = pc.category_id \n" +
-            "                where p.deleted = 1 order by p.id asc limit 3",nativeQuery = true)
+            "                where p.deleted = 1 order by p.id asc limit 4",nativeQuery = true)
     List<Map<String,Object>> topRatedProducts();
     @Query(value = "select p.id, p.image ,p.name ,p.price \n" +
             "               from product p join product_category pc on pc.product_id = p.id \n" +
@@ -44,7 +43,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "             and (pc.category_id = :category_id or :category_id is null)\n" +
             "             and (lower(p.name) like concat('%', lower(:name) ,'%') or :name is null)",nativeQuery = true)
     List<Map<String,Object>> getProduct(@Param("category_id") Integer category_id, @Param("name") String name, Pageable pageable);
-    @Query(value = "select p2.id, p2.image ,p2.name ,p2.price ,p2.quantity, pd.content, pc.category_id from product p2 \n" +
+    @Query(value = "select p2.code, p2.image ,p2.name ,p2.price ,p2.quantity, pd.content, pc.category_id from product p2 \n" +
             "              join product_category pc on pc.product_id = p2.id\n" +
             "              join product_detail pd on pd.product_id = p2.id where p2.id = :id",nativeQuery = true)
     List<Map<String,Object>> findByIdProduct(@Param("id") Long id);

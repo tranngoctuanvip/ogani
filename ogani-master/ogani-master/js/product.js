@@ -2,7 +2,7 @@ var productApiGetall = 'http://localhost:8088/product/getAll';
 var lastestProductApi = 'http://localhost:8088/product/lastestProduct';
 var unpaidApi = 'http://localhost:8088/cart/unpaid';
 var topRatedProductApi = 'http://localhost:8088/product/topRatedProduct';
-// var userId = sessionStorage.getItem('username');
+var token = localStorage.getItem('token');
 
 function start1(){
     getProduct(function(res) {
@@ -12,21 +12,20 @@ function start1(){
     unpaid(function(res){
         selectUnpaid(res?.data || [])
     });
-    // getlastestProduct(function(res){
-    //     lastestProduct(res?.data || [])
-    // });
-    // topRatedApi(function(res){
-    //     topRatedProduct(res?.data || [])
-    // })
 }
 start1();
 
 
-function createCart(id){    
+function createCart(id){   
+    var headers ={
+        'Authorization' : 'Bearer '+ token
+    } 
+    if(token){
         alert('Đã thêm vào giỏ hàng');
         var cartCreateApi = 'http://localhost:8088/cart/create?productId=' + id;
         fetch(cartCreateApi, {
-            method: 'POST'
+            method: 'POST',
+            headers: headers
         })
         .then(function(response){
             return response.json();
@@ -38,6 +37,10 @@ function createCart(id){
           // Xử lý lỗi
           console.error(error);
     })
+    }
+    else{
+        alert('Vui lòng đăng nhập để thêm vào giỏ hàng');
+    }  
 } 
 
 function getProduct(callback){
@@ -46,53 +49,6 @@ function getProduct(callback){
         return response.json();
     }).then(callback);
 }
-
-// function getlastestProduct(callback){
-//     fetch(lastestProductApi)
-//     .then(function(response){
-//         return response.json();
-//     }).then(callback);
-// }
-
-// function lastestProduct(data){
-//     var lastestProduct1 = document.querySelector('.latest1');
-//     var htmls = data.map(function(elem){
-//         return `<a href="#" class="latest-product__item">
-//         <div class="latest-product__item__pic">
-//             <img src="${elem.image}" alt="">
-//         </div>
-//         <div class="latest-product__item__text">
-//             <h6>${elem.name}</h6>
-//             <span>${elem.price}.00$</span>
-//         </div>
-//     </a>`
-//     });
-//     lastestProduct1.innerHTML = htmls.join('');
-// }
-
-// function topRatedApi(callback){
-//     fetch(topRatedProductApi)
-//     .then(function(response){
-//         return response.json();
-//     }).then(callback);
-// }
-
-// function topRatedProduct(data){
-//     var topRatedProducts = document.querySelector('.topReatedProduct');
-//     var htmls = data.map(function(elem){
-//         return `<a href="#" class="latest-product__item">
-//         <div class="latest-product__item__pic">
-//             <img src="${elem.image}" alt="">
-//         </div>
-//         <div class="latest-product__item__text">
-//             <h6>${elem.name}</h6>
-//             <span>${elem.price}.00$</span>
-//         </div>
-//     </a>`;
-//     }).join('');
-//     topRatedProducts.innerHTML = htmls;
-// }
-
 
 function renderProduct(data){
     var listProduct = document.querySelector('#list-product');

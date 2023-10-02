@@ -1,26 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" type="text/css" href="css/login.css">
-</head>
-<body>
-  <div class="container">
-    <h2>Đăng nhập</h2>
-    <form id="login-form">
-      <div class="form-group">
-        <label for="username">Tên đăng nhập:</label>
-        <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập">
-        <!-- <div id="name" style="color: red; display: none;"></div> -->
-      </div>
-      <div class="form-group">
-        <label for="password">Mật khẩu:</label>
-        <input type="password" id="password" name="password" placeholder="Nhập mật khẩu">
-        <!-- <div id="pass" style="color: red;display: none;"></div> -->
-      </div>
-      <button onclick="signin()">Đăng nhập</button>
-      <input type="button" value="Đăng ký" onclick="location.href='register.html';">
-    </form>
-  </div>
+<link rel="stylesheet" type="text/css" href="css/login.css">
+<main>
+  <form id="login-form">
+      <label for="username">Tên đăng nhập:</label>
+      <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập">
+      
+      <label for="password">Mật khẩu:</label>
+      <input type="password" id="password" name="password" placeholder="Nhập mật khẩu">
+      
+    <button id="button-btn" type="submit" onclick="signin()" style="margin-left: 90px;">Đăng nhập</button>
+    <button id="button-btn" type="submit" style="margin-left: 20px;"> Đăng ký</button>
+  </form>
+</main>
   <script src="js/login.js"></script>
-</body>
-</html>

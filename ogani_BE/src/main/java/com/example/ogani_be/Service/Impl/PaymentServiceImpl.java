@@ -12,7 +12,6 @@ import java.util.*;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
-
     @Override
     public String URL() {
         long amount = 100000;

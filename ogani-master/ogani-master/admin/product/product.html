@@ -7,33 +7,9 @@
         
     </select>  
     <button id="search-button" onclick="search()">Tìm kiếm</button>
-    <button id="add-button" onclick="toggleForm()">Thêm</button>
+    <button id="add-button"><a href="./create.html" style="text-decoration: none; color: black;">Thêm sản phẩm</a></button>
 </div>
-<form id="product-form" style="display: none;">
-    <label for="product-code">Mã sản phẩm:</label>
-    <input type="text" id="product-code" name="code">
-  
-    <label for="product-name">Tên sản phẩm:</label>
-    <input type="text" id="product-name" name="name">
-  
-    <label for="product-image">Hình ảnh:</label>
-    <input type="file" id="product-image" name="image">
 
-    <label for="product-price">Gía:</label>
-    <input type="text" id="product-price" name="price">
-
-    <label for="product-quantily">Số lượng</label>
-    <input type="text" id="product-quantily" name="quantity">
-
-    <label for="product-description">Nội dung:</label>
-    <textarea id="product-description" name="content"></textarea>
-
-    <label for="product-category">Danh mục</label>
-    <select id="category">
-      </select>  
-      
-    <button id="button-btn" type="submit" onclick="add()" >Thêm sản phẩm</button>
-  </form>
   <div class="table-container">
     <table id="product-table1">
         <thead>

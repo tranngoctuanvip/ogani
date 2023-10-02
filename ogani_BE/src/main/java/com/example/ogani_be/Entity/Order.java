@@ -49,6 +49,8 @@ public class Order {
     private LocalDateTime endTime;
     @Column(name = "deliver")
     private Long deliver;
+    @Column(name = "notification")
+    private String notification;
     @ManyToMany
     @JoinTable(name = "order_cart", joinColumns = @JoinColumn(name = "orderId"),
             inverseJoinColumns = @JoinColumn(name = "cartId"))

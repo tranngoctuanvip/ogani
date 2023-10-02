@@ -82,6 +82,7 @@ public class AuthServiceImpl implements AuthService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtProvider.createToken(authentication);
         UserPrinciple userPrinciple = (UserPrinciple) authentication.getPrincipal();
+        signin.setId(userPrinciple.getId());
         signin.setUsername(userPrinciple.getUsername());
         signin.setToken(token);
         signin.setPassword(userPrinciple.getPassword());

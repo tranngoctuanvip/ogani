@@ -43,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
         order.setPhone(orderDto.getPhone());
         order.setCreateBy(mapper.getUserId());
         order.setUserName(orderDto.getUserName());
-        order.setStatus(Constant.UNPAID);
+        order.setStatus(Constant.PROCESSING);
         orderRepository.save(order);
         for (int i=0;i<orderDto.getCartId().size();i++){
             orderRepository.create(orderDto.getCartId().get(i),order.getId());

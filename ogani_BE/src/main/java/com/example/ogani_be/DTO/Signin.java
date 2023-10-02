@@ -7,6 +7,7 @@ import java.util.Collection;
 
 @Data
 public class Signin {
+    private Long id;
     private String username;
     private String password;
     private String token;

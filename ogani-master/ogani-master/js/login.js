@@ -3,8 +3,6 @@ var username1 = document.getElementById('username');
 var password1 = document.getElementById('password');
 var loginForm = document.getElementById('login-form');
 var user = document.getElementById('login');
-var authContainer = document.querySelector('.header__top__right__auth');
-
 function signin() {
     loginForm.addEventListener('click',function(event){
       event.preventDefault();
@@ -18,19 +16,13 @@ function signin() {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(datalogin)
-          })
-          .then(response =>{
-            if (response.ok) {
-              return response.json();
-            }
-            else {
-              throw new Error('Đăng nhập thất bại');
-            }
+          }).then(function(response){
+            return response.json();
           })
           .then(data =>{
               // Lưu thông tin token và ID vào Local Storage
-              sessionStorage.setItem('token', data.token);
-              // sessionStorage.setItem('username',);
+              localStorage.setItem('token', data.data.token);
+              localStorage.setItem('username',data.data.username);
               window.location.href = './index.html';
           })
             .catch(error => {

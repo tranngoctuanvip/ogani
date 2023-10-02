@@ -1,116 +1,97 @@
 var categoryApi = "http://localhost:8088/category/getAll";
 var findByIdApi = "http://localhost:8088/product/findById?id=";
-function category(){
-    getAllCategory(function(res){
-        option(res?.data || [])
-    })
+var updateProductApi = 'http://localhost:8088/product/update?id=';
+function category() {
+  getAllCategory(function (res) {
+    option(res?.data || []);
+  });
 }
 category();
 
-function getAllCategory(callback){
-    fetch(categoryApi)
-    .then(function(response){
-        return response.json();
+function getAllCategory(callback) {
+  fetch(categoryApi)
+    .then(function (response) {
+      return response.json();
     })
-    .then(callback)
+    .then(callback);
 }
 
-function option(data){
-    var category = document.querySelector('#category');
-    var htmls = data.map(function(elem){
-        return `<option value="${elem.id}">${elem.name}</option>`;
-    }).join('');
-    category.innerHTML = htmls;
+function option(data) {
+  var category = document.querySelector("#search-category");
+  var htmls = data
+    .map(function (elem) {
+      return `<option value="${elem.id}">${elem.name}</option>`;
+    })
+    .join("");
+  category.innerHTML = htmls;
 }
-var urls = window.location.search;
-var id = urls.split("?")[1];
-async function update() {
 
-  var url1 = `${findByIdApi}${id}`;
-  var response = await fetch(url1);
-  var data = await response.json();
-//   var dataArray = Object.values(data);
-  //   var code1 = document.getElementById('code');
-  document.getElementById('name').value = data.name;
-//   document.getElementById('category') = data.category_id;
-//   document.getElementById('image1') = data.image;
-  document.getElementById('price').value = data.price;
-  document.getElementById('quantity').value = data.quantity;
-  document.getElementById('content').value = data.content; 
-  console.log(data);
-  return data;
-}  update();
+var queryString = window.location.search;
+var params = new URLSearchParams(queryString);
+var id = params.get("id");
 
+var url1 = `${findByIdApi}${id}`;
+fetch(url1, {
+  method: "GET",
+  headers: { "Content-Type": "application/json" },
+})
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    document.getElementById("product-code").value = data.data[0].code;
+    document.getElementById("product-name").value = data.data[0].name;
+    document.getElementById("search-category").value = data.data[0].category_id;
+    document.getElementById("image").src = data.data[0].image;
+    document.getElementById("product-price").value = data.data[0].price;
+    document.getElementById("product-quantity").value = data.data[0].quantity;
+    document.getElementById("product-description").value = data.data[0].content;
+    // console.log(data.data);
+    return data;
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
-document.addEventListener("DOMContentLoaded", function() {
-            var modal = document.createElement("div");
-            modal.classList.add("modal");
-            
-            var modalContent = document.createElement("div");
-            modalContent.classList.add("modal-content");
-            
-            var closeBtn = document.createElement("span");
-            closeBtn.classList.add("close");
-            closeBtn.innerHTML = "&times;";
-            
-            var form = document.createElement("form");
-            form.id = "myForm";
-            form.method = "post";
-            
-            var nameLabel = document.createElement("label");
-            nameLabel.textContent = "Tên sản phẩm:";
-            
-            var nameInput = document.createElement("input");
-            nameInput.type = "text";
-            nameInput.name = "name";
-            nameInput.required = true;
-            
-            var categoryLabel = document.createElement("label");
-            categoryLabel.textContent = "Danh mục:";
-            
-            var categoryInput = document.createElement("select");
-            categoryInput.options= 'category';
-            categoryInput.required = true;
-            
-            var imageLabel = document.createElement('Hình ảnh');
-            imageLabel.type = 'file';
+  var code = document.getElementById('product-code');
+  var name1 = document.getElementById('product-name');
+  var image = document.getElementById('product-image');
+  var price = document.getElementById('product-price');
+  var quantity = document.getElementById('product-quantity');
+  var content = document.getElementById('product-description');
+  var idCategory = document.getElementById('search-category');
+  var img = document.getElementById('image');
 
-            var priceLabel = document.createElement('Giá');
-            priceLabel.type = 'text';
-
-
-
-            var submitBtn = document.createElement("input");
-            submitBtn.type = "submit";
-            submitBtn.value = "Submit";
-            
-            form.appendChild(nameLabel);
-            form.appendChild(nameInput);
-            form.appendChild(emailLabel);
-            form.appendChild(emailInput);
-            form.appendChild(submitBtn);
-            
-            modalContent.appendChild(closeBtn);
-            modalContent.appendChild(form);
-            
-            modal.appendChild(modalContent);
-            
-            document.body.appendChild(modal);
-            
-            // Hiển thị cửa sổ form khi nhấn nút "Open Form"
-            var openBtn = document.getElementById("updateButton");
-            openBtn.addEventListener("click", function() {
-                modal.style.display = "block";
-            });
-            
-            // Đóng cửa sổ form khi nhấn nút "Close" hoặc click bên ngoài form
-            closeBtn.addEventListener("click", function() {
-                modal.style.display = "none";
-            });
-            
-            window.addEventListener("click", function(event) {
-                if (event.target === modal) {
-                    modal.style.display = "none";
-                }
-            })
-          })
+function update(){
+    document.getElementById('product-form').addEventListener('submit',function(event){
+        event.preventDefault();
+        var xacNhan = confirm("Bạn chắc chắn muốn tiếp tục và chỉnh sửa?");
+        if (xacNhan){          
+          var images = image.files[0];
+          if(!images){
+            images = img.src;
+          }
+            var formData = new FormData();
+            formData.append('code',code.value);
+            formData.append('name',name1.value);
+            formData.append('image',images);
+            formData.append('price',price.value);
+            formData.append('quantity',quantity.value);
+            formData.append('content',content.value);
+            formData.append('categoryId',idCategory.value);      
+            var url2 = `${updateProductApi}${id}`;
+            fetch(url2,{
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: formData
+            }).then(function(response){
+                    alert('Sửa sản phẩm thành công!');
+                    window.location.replace('./product.html');
+            }).catch(function(error) {
+                // Xử lý lỗi mạng
+                console.error('Lỗi kết nối: ' + error.message);
+              });
+        }
+    })
+}
+    

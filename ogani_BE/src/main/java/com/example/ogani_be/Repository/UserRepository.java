@@ -17,6 +17,7 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+    List<User> findByRoleSet_CodeOrRoleSet_Code(String code, String code1);
 //    List<User> findByDeleted(Integer deleted);
     Optional<User> findByIdAndDeleted(Long id, Integer deleted);
     Optional<User> findByEmailAndDeleted(String email, Integer deleted);

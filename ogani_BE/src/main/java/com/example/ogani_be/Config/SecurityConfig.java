@@ -74,23 +74,23 @@ public class SecurityConfig {
                        "/product/getAll","/product/lastestProduct","/category/getAll","/auth/signin/**",
                        "/auth/signup","/auth/logout","/auth/sendEmail","/auth/resetPassword","/images/**",
                        "/product/getProduct/**","/product/create/**","/category/getNameAndCode/**",
-                       "/product/delete/**","/product/update/**","/payment/**","/product/findById/**",
+                       "/product/update/**","/payment/**","/product/findById/**",
                        "/cart/deleteCart/**","/cart/getUnpaidCart","/cart/update/**","/blog/**","/cart/unpaid",
-                       "/product/topRatedProduct","/cart/create/**","/auth/getUser").permitAll()
+                       "/product/topRatedProduct","/auth/getUser").permitAll()
 
                 .antMatchers("/product/**","/category/**","/productdetail/**","/auth/changePassword/**",
-                        "/statistical/**")
-               .hasAnyAuthority("ADMIN")
+                        "/statistical/sumOrder/**","/order/**","/kafka/**").hasAnyAuthority("ADMIN")
 
                .antMatchers("/blog/create/**","/blog/update/**",
                        "product/update/**","/category/create/**",
                         "/category/update/**","/auth/changePassword","/blog/getBlog","/statistical/**","/order/getAll/**")
                .hasAnyAuthority("STAFF")
 
-               .antMatchers("/auth/changePassword")
+               .antMatchers("/auth/changePassword","/order/create/","/order/getAll/","/cart/create/**",
+                       "/comment/create/")
                .hasAnyAuthority("USER")
 
-               .antMatchers("/order/update/**","/order/getAll","/auth/changePassword").hasRole("SHIPPER")
+               .antMatchers("/order/update/**","/order/getAll","/auth/changePassword").hasAnyAuthority("SHIPPER")
                 .anyRequest().authenticated().and()
                 .logout().logoutUrl("/logout")
                 .permitAll()

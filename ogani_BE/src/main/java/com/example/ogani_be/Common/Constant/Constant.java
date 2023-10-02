@@ -15,4 +15,5 @@ public class Constant {
     public static final Integer PROCESSING = 2; // đang xử lý
     public static final Integer CANCEL = 3; //hủy
     public static final Integer End = 4; // kết thúc
+    public static final Integer COMPLETE = 5; // hoàn thành
 }

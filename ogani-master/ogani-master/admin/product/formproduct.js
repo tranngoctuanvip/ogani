@@ -8,6 +8,11 @@ var sortType = 'desc';
 var sortBy = 'id'; 
 var isStart1Running = true;
 
+
+var buttonAdd = document.getElementById('button-btn');
+var deletebutton = document.getElementById('delete-button');
+var searchButton = document.getElementById('search-button');
+
 function start(){
     getProduct(function(res){
       getData(res?.data || []);
@@ -17,20 +22,11 @@ function start(){
 }
 start();
 
-var code = document.getElementById('product-code');
-var name1 = document.getElementById('product-name');
-var image = document.getElementById('product-image');
-var price = document.getElementById('product-price');
-var quantily = document.getElementById('product-quantily');
-var content = document.getElementById('product-description');
-var idCategory = document.getElementById('category');
-var buttonAdd = document.getElementById('button-btn');
-var deletebutton = document.getElementById('delete-button');
-var searchButton = document.getElementById('search-button');
+
 
 function start1() {
     getCategory(function (res) {
-      options(res?.data || []);
+      // options(res?.data || []);
       searchCategory(res?.data || []);
     });
   }
@@ -72,37 +68,8 @@ function toggleForm() {
     form.style.display = "none";
   }
 }
-function add(){
-  document.getElementById('product-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Ngăn chặn chuyển hướng trang sau khi submit
-    var formData = new FormData();
-    formData.append('code',code.value);
-    formData.append('name',name1.value);
-    formData.append('image',image.files[0]);
-    formData.append('price',price.value);
-    formData.append('quantity',quantily.value);
-    formData.append('content',content.value);
-    formData.append('categoryId',idCategory.value);
-    fetch(craeteProductApi, {
-      method: 'POST',
-      body: formData
-    })
-      .then(function(response) {
-        if (response.ok) {
-          // Xử lý thành công
-          console.log('Dữ liệu đã được gửi thành công!');
-        } else {
-          // Xử lý lỗi
-          console.error('Gửi dữ liệu thất bại!');
-        }
-        start();
-      })
-      .catch(function(error) {
-        // Xử lý lỗi mạng
-        console.error('Lỗi kết nối: ' + error.message);
-      });
-  });
-}
+
+
 
 
 function getProduct(callback){
@@ -126,7 +93,7 @@ function getData(data){
         <td>${elem.price}</td>
         <td>
             <div class="actions">
-                <button id="openBtn" onclick="openBtns()">Sửa</button>
+                <button id="openBtn"><a href="./update.html?id=${elem.id}" style="text-decoration: none;">Sửa</a></button>
                 <button id="${elem.id}" onclick="return deleted(this.id)">Xóa</button>
             </div>
         </td></tr>`
@@ -222,72 +189,4 @@ function deleted(id){
     })
     alert('Đã xóa thành công!');
   }
-}
-
-function openBtns(){
-  document.addEventListener("DOMContentLoaded", function() {
-    var modal = document.createElement("div");
-    modal.classList.add("modal");
-    
-    var modalContent = document.createElement("div");
-    modalContent.classList.add("modal-content");
-    
-    var closeBtn = document.createElement("span");
-    closeBtn.classList.add("close");
-    closeBtn.innerHTML = "&times;";
-    
-    var form = document.createElement("form");
-    form.id = "myForm";
-    form.method = "post";
-    
-    var nameLabel = document.createElement("label");
-    nameLabel.textContent = "Name:";
-    
-    var nameInput = document.createElement("input");
-    nameInput.type = "text";
-    nameInput.name = "name";
-    nameInput.required = true;
-    
-    var emailLabel = document.createElement("label");
-    emailLabel.textContent = "Email:";
-    
-    var emailInput = document.createElement("input");
-    emailInput.type = "email";
-    emailInput.name = "email";
-    emailInput.required = true;
-    
-    var submitBtn = document.createElement("input");
-    submitBtn.type = "submit";
-    submitBtn.value = "Submit";
-    
-    form.appendChild(nameLabel);
-    form.appendChild(nameInput);
-    form.appendChild(emailLabel);
-    form.appendChild(emailInput);
-    form.appendChild(submitBtn);
-    
-    modalContent.appendChild(closeBtn);
-    modalContent.appendChild(form);
-    
-    modal.appendChild(modalContent);
-    
-    document.body.appendChild(modal);
-  
-    // Hiển thị cửa sổ form khi nhấn nút "Open Form"
-      var openBtn = document.getElementById("openBtn");
-      openBtn.addEventListener("click", function() {
-          modal.style.display = "block";
-      });
-    
-    // Đóng cửa sổ form khi nhấn nút "Close" hoặc click bên ngoài form
-    closeBtn.addEventListener("click", function() {
-        modal.style.display = "none";
-    });
-    
-    window.addEventListener("click", function(event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    })
-  });
 }

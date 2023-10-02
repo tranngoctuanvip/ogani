@@ -18,6 +18,7 @@ import java.util.Optional;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
+    Optional<Order> findByDeliverAndDeleted(Long deliver, Integer deleted);
     long removeById(Long id);
     Optional<Order> findByIdAndDeleted(Long id, Integer deleted);
     @Modifying

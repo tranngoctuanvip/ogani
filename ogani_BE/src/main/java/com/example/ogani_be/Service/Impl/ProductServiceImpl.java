@@ -80,6 +80,9 @@ public class ProductServiceImpl implements ProductService {
         product.setQuantity(quantity);
         product.setStatus(Constant.STATUS);
         product.setDeleted(Constant.NOTDELETE);
+        if(image == null){
+            product.setImage(product.getImage());
+        }
         product.setImage(Utils.imageName(image));
         productRepository.save(product);
         productRepository.update(categoryId, product.getId());
