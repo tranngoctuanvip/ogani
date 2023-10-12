@@ -1,6 +1,7 @@
 var categoryApi = "http://localhost:8088/category/getAll";
 var findByIdApi = "http://localhost:8088/product/findById?id=";
 var updateProductApi = 'http://localhost:8088/product/update?id=';
+var token = localStorage.getItem('token');
 function category() {
   getAllCategory(function (res) {
     option(res?.data || []);
@@ -63,35 +64,46 @@ fetch(url1, {
   var img = document.getElementById('image');
 
 function update(){
+  if(token){
     document.getElementById('product-form').addEventListener('submit',function(event){
-        event.preventDefault();
-        var xacNhan = confirm("Bạn chắc chắn muốn tiếp tục và chỉnh sửa?");
-        if (xacNhan){          
-          var images = image.files[0];
-          if(!images){
-            images = img.src;
-          }
-            var formData = new FormData();
-            formData.append('code',code.value);
-            formData.append('name',name1.value);
-            formData.append('image',images);
-            formData.append('price',price.value);
-            formData.append('quantity',quantity.value);
-            formData.append('content',content.value);
-            formData.append('categoryId',idCategory.value);      
-            var url2 = `${updateProductApi}${id}`;
-            fetch(url2,{
-                method: 'POST',
-                headers: { "Content-Type": "application/json" },
-                body: formData
-            }).then(function(response){
-                    alert('Sửa sản phẩm thành công!');
-                    window.location.replace('./product.html');
-            }).catch(function(error) {
-                // Xử lý lỗi mạng
-                console.error('Lỗi kết nối: ' + error.message);
-              });
+      event.preventDefault();
+      var xacNhan = confirm("Bạn chắc chắn muốn tiếp tục và chỉnh sửa?");
+      if (xacNhan){          
+       var images = image.files[0];
+        if(images === ""){
+          images = img.src;
         }
-    })
+          var formData = new FormData();
+          formData.append('code',code.value);
+          formData.append('name',name1.value);
+          formData.append('image',images);
+          formData.append('price',price.value);
+          formData.append('quantity',quantity.value);
+          formData.append('content',content.value);
+          formData.append('categoryId',idCategory.value);      
+          var url2 = `${updateProductApi}${id}`;
+          fetch(url2,{
+              method: 'POST',
+              headers: { 
+                Authorization : "Bearer " + token
+             },
+              body: formData
+          }).then(function(response){
+            return response.json();
+          }).then(data =>{
+            alert('Sửa sản phẩm thành công!');
+            window.location.replace('./product.html');
+            console.log(data);
+          })
+          .catch(function(error) {
+              // Xử lý lỗi mạng
+              console.error('Lỗi kết nối: ' + error.message);
+            });
+      }
+  })
+  }
+  else{
+    alert('Vu lòng đăng nhập')
+  }
 }
     

@@ -1,6 +1,6 @@
 package com.example.ogani_be.Common.Mapper;
 
-import com.example.ogani_be.Security.UserPrincical.UserPrinciple;
+import com.example.ogani_be.Config.Security.UserPrincical.UserPrinciple;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

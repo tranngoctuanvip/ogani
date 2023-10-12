@@ -20,10 +20,17 @@ function signin() {
             return response.json();
           })
           .then(data =>{
+            if(data.status === 'SUCCESS'){
+              alert(data.message);
               // Lưu thông tin token và ID vào Local Storage
               localStorage.setItem('token', data.data.token);
-              localStorage.setItem('username',data.data.username);
+              localStorage.setItem('name',data.data.name);
               window.location.href = './index.html';
+            }
+            else{
+              alert(data.message);
+            }
+              
           })
             .catch(error => {
               console.log("Error:", error);

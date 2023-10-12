@@ -1,40 +1,85 @@
 var getUnpaidCartApi = 'http://localhost:8088/cart/getUnpaidCart';
+var paymentApi = 'http://localhost:8088/payment/createPayment';
+var totalPaymentApi = 'http://localhost:8088/payment/totalPayment';
+var token = localStorage.getItem('token');
 // var unpaidApi = 'http://localhost:8088/cart/unpaid';
-function start(){
+function starts(){
     getUnpaid(function(res){
         getUnpaidCart(res?.data || [])
     });
-    // unpaid(function(res){
-    //     selectUnpaid(res?.data || [])
-    // })
+    totalPayment(function(res){
+        getPayment(res?.data || [])
+    });
 }
-start();
+starts();
 
 function getUnpaid(callback){
-    fetch(getUnpaidCartApi)
-    .then(function(response){
-        return response.json();
-    }).then(callback)
+    if (token){
+        fetch(getUnpaidCartApi,{
+            method: 'GET',
+            headers: {
+                'Authorization' : 'Bearer ' + token
+            }
+        })
+        .then(function(response){
+            return response.json();  
+        }).then(callback)
+    }
 }
 
 function deleteCart(id){
-    var confirmed = confirm('Bạn có chắc chắn muốn xóa không?');
-    if(confirmed){
-        var deleteCartApi = 'http://localhost:8088/cart/deleteCart?cartId=' + id;
-        fetch(deleteCartApi,{
-            method : 'POST'
-        })
-        .then(response => response.json())
-        .then(data => {
-          // Xử lý dữ liệu từ API
-          console.log(data);
-          start();
-        })
-        .catch(error => {
-          // Xử lý lỗi
-          console.error(error);
-        })
+    if(token){
+        var confirmed = confirm('Bạn có chắc chắn muốn xóa không?');
+        if(confirmed){
+            var deleteCartApi = 'http://localhost:8088/cart/deleteCart?cartId=' + id;
+            fetch(deleteCartApi,{
+                method : 'POST',
+                headers: {
+                    'Authorization' : 'Bearer ' + token
+                }
+            })
+            .then(response => response.json())
+            .then(data =>{
+                console.log(data);
+                starts();
+            })
+            .catch(error => {
+              // Xử lý lỗi
+              console.error(error);
+            })
+        }
     }
+    else {
+        alert('Vui lòng đăng nhập');
+    }
+}
+
+function totalPayment(callback){
+    if(token){
+        fetch(totalPaymentApi,{
+            method: 'GET',
+            headers: {
+                'Authorization' : 'Bearer ' + token
+            }
+        }).then(response => response.json())
+        .then(data => console.log(data))
+        .then(callback)
+    }
+    else{
+        alert('Vui lòng đăng nhập để thanh toán')
+    }
+}
+
+function getPayment(data){
+    var getPayment = document.querySelector('.shoping__checkout');
+    var htmls = data.map(function(elem){
+        return ` <h5>Cart Total</h5>
+        <ul>
+            <li>Subtotal <span>${elem.message}VND</span></li>
+        </ul>
+        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>`
+    }).join('');
+    getPayment.innerHTML = htmls;
 }
 
 function getUnpaidCart(data){
@@ -64,16 +109,9 @@ function getUnpaidCart(data){
         <td class="shoping__cart__item__close">
             <span id=${elem.id} class="icon_close" onclick ="return deleteCart(this.id)"></span>
         </td>
-    </tr>`;
+    </tr>`
     });
-
     getUnpaid.innerHTML = htmls.join("");
-    // data.forEach(function (elem) {
-    //     var updateButton = document.getElementById('updateCart');
-    //     updateButton.addEventListener('click', function () {
-    //       statusByid(elem.id,elem.quality);
-    //     });
-    //   })
 }
 
 // Lấy liên kết theo ID
@@ -97,7 +135,6 @@ function minus(){
 // Xử lý sự kiện khi nhấn nút cộng
 function plus(){
     plusBtn1.addEventListener('click', function(event) {
-        event.
         event.preventDefault;
         var currentValue = quantityInput.value;
         quantityInput.value = currentValue + 1;

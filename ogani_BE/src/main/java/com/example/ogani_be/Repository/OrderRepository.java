@@ -56,4 +56,11 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
                                          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
                                          @JsonFormat(pattern = "yyyy-MM-dd")
                                          @RequestParam("endTime") LocalDate endTime);
+    @Query(value = "select sum(p.price*c.quality) as total from orders o \n" +
+            "            join order_cart oc on oc.order_id = o.id \n" +
+            "            join cart c on c.id = oc.cart_id \n" +
+            "            join product p on p.id = c.product_id \n" +
+            "            where o.create_by = :create_by and o.status = 1 \n" +
+            "            and o.deleted = 1 and c.deleted = 1 and p.deleted = 1",nativeQuery = true)
+    Integer totalPayment(@Param("create_by") Long create_by);
 }

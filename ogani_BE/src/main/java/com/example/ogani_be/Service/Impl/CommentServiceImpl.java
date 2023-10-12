@@ -57,6 +57,10 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public void create(CommentDto commentDto) {
-
+        Comment comment = new Comment();
+        comment.setComment(commentDto.getComment());
+        comment.setEmail(commentDto.getEmail());
+        comment.setCreateAt(LocalDateTime.now());
+        commentRepository.save(comment);
     }
 }

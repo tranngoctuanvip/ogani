@@ -11,11 +11,12 @@ import java.util.*;
 
 public class Config {
     public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    public static String vnp_ReturnUrl = "http://localhost:8080/vnpay_jsp/vnpay_return.jsp";
+    public static String vnp_ReturnUrl = "http://127.0.0.1:5500/ogani-master/vnpay_return.html";
     public static String vnp_TmnCode = "9RBVG0OF";
     public static String vnp_Version = "2.1.0";
     public static String vnp_Command = "pay";
-//    public static String orderType = "other";
+    public static String orderType = "card";
+    public static String vnp_IpAddr = "127.0.0.1";
     public static String secretKey = "YSUVDHKYNHULHLSZBPJMZVERKMCYQERR";
     public static String vnp_ApiUrl = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";
 

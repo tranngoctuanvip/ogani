@@ -1,13 +1,13 @@
 var craeteProductApi = 'http://localhost:8088/product/create';
 var productAPi = 'http://localhost:8088/product/getProduct';
-
 var deletedAPi = 'http://localhost:8088/product/delete';
 const curentSize = 6; // Số sản phẩm hiển thị trên mỗi trang
 let currentPage = 0; // Trang hiện tại
 var sortType = 'desc';
 var sortBy = 'id'; 
-var isStart1Running = true;
 
+var token = localStorage.getItem('token');
+var role = localStorage.getItem('role');
 
 var buttonAdd = document.getElementById('button-btn');
 var deletebutton = document.getElementById('delete-button');
@@ -69,19 +69,33 @@ function toggleForm() {
   }
 }
 
-
-
-
 function getProduct(callback){
-  var searchName = document.getElementById('search-name');
-  var searchCategory = document.getElementById('search-category');
-    const url = `${productAPi}?page=${currentPage}&size=${curentSize}&sortType=${sortType}&sortBy=${sortBy}&name=${searchName.value}&categoryId=${searchCategory.value}`;
-    fetch(url)
-    .then(function(response){
-        return response.json();
-    })
-    .then(callback);
+  if(token){
+    var searchName = document.getElementById('search-name');
+    var searchCategory = document.getElementById('search-category');
+      const url = `${productAPi}?page=${currentPage}&size=${curentSize}&sortType=${sortType}&sortBy=${sortBy}&name=${searchName.value}&categoryId=${searchCategory.value}`;
+      fetch(url,{
+        method: 'GET',
+        headers: {'Authorization' : 'Bearer ' + token}
+      })
+      .then(function(response){
+          return response.json();
+      })
+      .then(callback);
+  }
+  else {
+    window.location.href = "http://127.0.0.1:5500/ogani-master/admin/login/login.html";
+  }
 }
+
+var deleteId = document.getElementById('deleteId');
+function checkButton(){
+  if(role.includes('STAFF') || role.includes('SHIPPER')){
+    deleteId.style.display = 'none';
+  }
+}
+
+checkButton();
 
 function getData(data){
     var listAllProduct1 = document.querySelector('#product-table');
@@ -93,8 +107,8 @@ function getData(data){
         <td>${elem.price}</td>
         <td>
             <div class="actions">
-                <button id="openBtn"><a href="./update.html?id=${elem.id}" style="text-decoration: none;">Sửa</a></button>
-                <button id="${elem.id}" onclick="return deleted(this.id)">Xóa</button>
+                <button id="openBtn"><a href="./update.html?id=${elem.id}" style="text-decoration: none;"><i class="fas fa-edit" style="color: #020412;"></i></a></button>
+                <button id="deleteId" onclick="return deleted(${elem.id})"><i class="fas fa-trash-alt"></i></button>
             </div>
         </td></tr>`
     }).join('');
@@ -156,37 +170,35 @@ function changePage(page) {
   start();
 }
 
-
-
-
-
 function redirectToUpdatePage(id) {
   var url = './update.html?'+id;
   window.location.href = url;
 }
 
-
-
-
-
 function deleted(id){
-  var confirmed = confirm('Bạn có chắc chắn muốn xóa không?');
-  // Kiểm tra xem người dùng đã xác nhận hay không
-  if (confirmed) {
-    var url = `${deletedAPi}?id=` +id;
-    fetch(url,{
-      method: 'POST'
-    })
-    .then(response => response.json())
-    .then(data => {
-      // Xử lý dữ liệu từ API
-      console.log(data);
-      start();
-    })
-    .catch(error => {
-      // Xử lý lỗi
-      console.error(error);
-    })
-    alert('Đã xóa thành công!');
+  if(token){
+    var confirmed = confirm('Bạn có chắc chắn muốn xóa không?');
+    // Kiểm tra xem người dùng đã xác nhận hay không
+    if (confirmed) {
+      var url = `${deletedAPi}?id=` +id;
+      fetch(url,{
+        method: 'POST',
+        headers: {'Authorization' : 'Bearer ' + token}
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Xử lý dữ liệu từ API
+        console.log(data);
+        start();
+      })
+      .catch(error => {
+        // Xử lý lỗi
+        console.error(error);
+      })
+      alert('Đã xóa thành công!');
+    }
+  }
+  else{
+    alert('Bạn vui lòng đăng nhập');
   }
 }

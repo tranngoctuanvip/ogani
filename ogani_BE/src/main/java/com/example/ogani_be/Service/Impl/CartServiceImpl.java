@@ -4,9 +4,7 @@ import com.example.ogani_be.Common.Constant.Constant;
 import com.example.ogani_be.Common.Mapper.Mapper;
 import com.example.ogani_be.DTO.CartDto;
 import com.example.ogani_be.Entity.Cart;
-import com.example.ogani_be.Entity.Product;
 import com.example.ogani_be.Repository.CartRepository;
-import com.example.ogani_be.Repository.ProductRepository;
 import com.example.ogani_be.Service.CartService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +36,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public List<Map<String, Object>> getUnpaidCart() {
-        var getUnpaidCart = cartRepository.getUnpaidCart();
+        var getUnpaidCart = cartRepository.getUnpaidCart(mapper.getUserId());
         return getUnpaidCart;
     }
 
@@ -69,12 +67,14 @@ public class CartServiceImpl implements CartService {
             throw new RuntimeException("Giỏ hàng không tồn tại");
         }
         Cart cart = cartOptional.get();
-        return null;
+        cart.setStatus(status);
+        cartRepository.save(cart);
+        return cart;
     }
 
     @Override
     public List<Map<String, Object>> unpaid() {
-        var unpaid = cartRepository.unpaid();
+        var unpaid = cartRepository.unpaid(mapper.getUserId());
         return unpaid;
     }
 }

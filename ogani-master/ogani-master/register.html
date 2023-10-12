@@ -1,17 +1,28 @@
 
 <link rel="stylesheet" type="text/css" href="css/login.css">
 <main>
-  <form id="product-form">
+  <form id="signup-form">
     <label for="username">Tên đăng nhập:</label>
     <input type="text" id="username" name="username" placeholder="Tên đăng nhập">
-  
+    <div id="errorUsername" style="color: red;"></div>
+
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" placeholder="Email"> 
-  
+    <input type="email" id="email" name="email" placeholder="Email">
+    <div id="errorEmail" style="color: red;"></div>
+
+    <label for="name">Họ và tên:</label>
+    <input type="text" id="name" name="name" placeholder="Họ và tên">
+    <div id="errorName" style="color: red;"></div>
+
     <label for="password">Mật khẩu:</label>
     <input type="password" id="password" name="password" placeholder="Nhập mật khẩu">
-      
-    <button id="button-btn" type="submit" style="margin-left: 50px;">Đăng ký</button>
-    <button id="buttons-btn" type="submit" style="margin-left: 100px;">Quay lại</button>
+
+    <label for="Enter-password">Nhập lại khẩu:</label>
+    <input type="password" id="enterPassword" name="password" placeholder="Nhập lại mật khẩu">
+    <div id="error" style="color: red;"></div>
+
+    <button type="submit" style="margin-left: 140px;" onclick="signup()">Đăng ký</button>
+    <a href="./login.html" style="margin-left: 300px;">Quay lại?</a>
   </form>
 </main>
+<script src="js/register.js"></script>

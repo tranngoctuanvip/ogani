@@ -36,4 +36,15 @@ public class PaymentApi {
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }
+    @GetMapping("totalPayment")
+    public ResponseEntity<?> totalPayment(){
+        try{
+            var totalPayment = paymentService.totalPayment();
+            return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
+                    .message("Get total payment").data(totalPayment).build(),HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
+                    .message(e.getMessage()).build(),HttpStatus.OK);
+        }
+    }
 }

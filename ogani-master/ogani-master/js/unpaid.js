@@ -1,4 +1,5 @@
 var unpaidApi = 'http://localhost:8088/cart/unpaid';
+var token = localStorage.getItem('token');
 function unpaids(){
     unpaid(function(res){
         selectUnpaid(res?.data || [])
@@ -7,11 +8,16 @@ function unpaids(){
 unpaids();
 
 function unpaid(callback){
-    fetch(unpaidApi)
-    .then(function(response){
-        return response.json();
-    })
-    .then(callback)
+    if(token){
+        fetch(unpaidApi,{
+            headers: {'Authorization' : 'Bearer ' + token }
+        })
+        .then(function(response){
+            return response.json();
+        })
+        .then(callback)
+    }
+   
 }
 
 function selectUnpaid(data){

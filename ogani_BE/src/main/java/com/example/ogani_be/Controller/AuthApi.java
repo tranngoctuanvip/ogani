@@ -31,9 +31,9 @@ public class AuthApi {
         try{
             var login = authService.signIn(signin);
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
-                    .message("Login Successfull").data(login).build(), HttpStatus.OK);
+                    .message("Đăng nhập thành công").data(login).build(), HttpStatus.OK);
         } catch (Exception e) {
-        }            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+        }            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                 .message("Tài khoản hoặc mật khẩu không chính xác").build(),HttpStatus.BAD_REQUEST);
     }
     @PostMapping("signup")
@@ -41,9 +41,9 @@ public class AuthApi {
         try{
             var register = authService.signup(signup);
             return new ResponseEntity<>(ResponseData.builder().status(SUCCESS.name())
-                    .message("Register Successfull").data(register).build(), HttpStatus.OK);
+                    .message("Đăng ký thành công").data(register).build(), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(ResponseData.builder().status(ERROR.name())
+            return new ResponseEntity<>(ResponseError.builder().status(ERROR.name())
                     .message(e.getMessage()).build(),HttpStatus.BAD_REQUEST);
         }
     }

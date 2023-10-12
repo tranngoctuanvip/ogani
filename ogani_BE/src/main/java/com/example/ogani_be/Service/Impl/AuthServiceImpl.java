@@ -8,8 +8,8 @@ import com.example.ogani_be.Entity.Role;
 import com.example.ogani_be.Entity.User;
 import com.example.ogani_be.Repository.RoleRepository;
 import com.example.ogani_be.Repository.UserRepository;
-import com.example.ogani_be.Security.UserPrincical.UserPrinciple;
-import com.example.ogani_be.Security.jwt.JwtProvider;
+import com.example.ogani_be.Config.Security.UserPrincical.UserPrinciple;
+import com.example.ogani_be.Config.Security.jwt.JwtProvider;
 import com.example.ogani_be.Service.AuthService;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
@@ -28,6 +28,7 @@ import javax.mail.internet.MimeMessage;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -50,7 +51,7 @@ public class AuthServiceImpl implements AuthService {
         User user = new User();
         Optional<User> optionalUser = userRepository.findByUserNameAndDeleted(signup.getUserName(), Constant.NOTDELETE);
         if (optionalUser.isPresent()){
-            throw new RuntimeException("Tên tài khoản đã tồn tại");
+            throw new RuntimeException("Tên đăng nhập đã tồn tại");
         }
         Optional<User> optional = userRepository.findByEmailAndDeleted(signup.getEmail(), Constant.NOTDELETE);
         if (optional.isPresent()){
@@ -60,10 +61,11 @@ public class AuthServiceImpl implements AuthService {
         user.setDeleted(Constant.NOTDELETE);
         user.setStatus(Constant.STATUS);
         user.setCreateAt(LocalDateTime.now());
+        user.setName(signup.getName());
         user.setUserName(signup.getUserName());
         user.setPassword(passwordEncoder.encode(signup.getPassword()));
         userRepository.save(user);
-        if (signup.getRoles().size() == 0){
+        if (signup.getRoles() == null){
             userRepository.create(user.getId(), 6l);
         }
         else {
@@ -84,6 +86,7 @@ public class AuthServiceImpl implements AuthService {
         UserPrinciple userPrinciple = (UserPrinciple) authentication.getPrincipal();
         signin.setId(userPrinciple.getId());
         signin.setUsername(userPrinciple.getUsername());
+        signin.setName(userPrinciple.getName());
         signin.setToken(token);
         signin.setPassword(userPrinciple.getPassword());
         signin.setType(signin.getType());

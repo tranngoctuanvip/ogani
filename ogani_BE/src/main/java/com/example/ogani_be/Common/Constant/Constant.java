@@ -16,4 +16,8 @@ public class Constant {
     public static final Integer CANCEL = 3; //hủy
     public static final Integer End = 4; // kết thúc
     public static final Integer COMPLETE = 5; // hoàn thành
+
+    //payment
+    public static final Integer SUCCESSFULL = 1; // giao dịch thành công
+    public static final Integer TRANSACTION_ERROR = 0; // giao dịch thất bại
 }

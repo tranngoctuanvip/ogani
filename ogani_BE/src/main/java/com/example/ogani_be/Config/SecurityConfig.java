@@ -1,8 +1,8 @@
 package com.example.ogani_be.Config;
 
-import com.example.ogani_be.Security.UserPrincical.Userdetail;
-import com.example.ogani_be.Security.jwt.JwtEntryPoint;
-import com.example.ogani_be.Security.jwt.JwtTokenFilter;
+import com.example.ogani_be.Config.Security.UserPrincical.Userdetail;
+import com.example.ogani_be.Config.Security.jwt.JwtEntryPoint;
+import com.example.ogani_be.Config.Security.jwt.JwtTokenFilter;
 import com.google.common.collect.ImmutableList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -70,27 +70,24 @@ public class SecurityConfig {
         http
                 .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
                 .and().csrf().disable();
-       http.authorizeRequests().antMatchers("/blog/selectTop3",
-                       "/product/getAll","/product/lastestProduct","/category/getAll","/auth/signin/**",
-                       "/auth/signup","/auth/logout","/auth/sendEmail","/auth/resetPassword","/images/**",
-                       "/product/getProduct/**","/product/create/**","/category/getNameAndCode/**",
-                       "/product/update/**","/payment/**","/product/findById/**",
-                       "/cart/deleteCart/**","/cart/getUnpaidCart","/cart/update/**","/blog/**","/cart/unpaid",
-                       "/product/topRatedProduct","/auth/getUser").permitAll()
 
-                .antMatchers("/product/**","/category/**","/productdetail/**","/auth/changePassword/**",
-                        "/statistical/sumOrder/**","/order/**","/kafka/**").hasAnyAuthority("ADMIN")
+       http.authorizeRequests().antMatchers("/product/getAll/**","/product/lastestProduct","/category/getAll",
+                       "/auth/signin/**","/auth/signup/**","/auth/logout","/auth/sendEmail","/auth/resetPassword","/images/**",
+                       "/product/getProduct/**","/category/getNameAndCode/**", "/product/update/**","/payment/**",
+                       "/product/findById/**","/blog/getBlog/**","/blog/selectTop3","/product/topRatedProduct","/auth/getUser").permitAll()
 
-               .antMatchers("/blog/create/**","/blog/update/**",
-                       "product/update/**","/category/create/**",
-                        "/category/update/**","/auth/changePassword","/blog/getBlog","/statistical/**","/order/getAll/**")
-               .hasAnyAuthority("STAFF")
+               .antMatchers("/product/update/**","/product/create/**","/blog/create/**","/blog/update/**",
+                       "/statistical/**","/auth/getUser").hasAnyAuthority("ADMIN","STAFF")
 
-               .antMatchers("/auth/changePassword","/order/create/","/order/getAll/","/cart/create/**",
-                       "/comment/create/")
-               .hasAnyAuthority("USER")
+               .antMatchers("/product/delete/**","/blog/delete/**","/category/delete/**").hasAnyAuthority("ADMIN")
 
-               .antMatchers("/order/update/**","/order/getAll","/auth/changePassword").hasAnyAuthority("SHIPPER")
+               .antMatchers("/cart/create/**","/cart/unpaid","/cart/getUnpaidCart","/cart/deleteCart/**",
+                       "/cart/update/**","/cart/unpaid","/auth/logout","/auth/changePassword/**","/comment/create/**",
+                       "/order/create/**","/order/getAll","/payment/totalPayment","/payment/createPayment","/chat/send",
+                       "/chat/bot/**").hasAnyAuthority("USER","SHIPPER","STAFF","ADMIN")
+
+               .antMatchers("/order/update/**").hasAnyAuthority("SHIPPER","ADMIN","STAFF")
+
                 .anyRequest().authenticated().and()
                 .logout().logoutUrl("/logout")
                 .permitAll()

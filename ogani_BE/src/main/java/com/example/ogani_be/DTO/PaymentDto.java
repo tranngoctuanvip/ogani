@@ -5,8 +5,12 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class PaymentDto implements Serializable {
-    private String status;
-    private String message;
-    private String URL;
+public class PaymentDto {
+    private String paymentCode;
+    private Integer money;
+    private String description;
+    private String errorCode;
+    private String transactionCode;
+    private String bankCode;
+    private Long orderId;
 }

@@ -1654,7 +1654,7 @@ ol {
 	padding-top: 10px;
 }
 
-.product__pagination a,
+/* .product__pagination a,
 .blog__pagination a {
 	display: inline-block;
 	width: 30px;
@@ -1683,7 +1683,7 @@ ol {
 .product__pagination a:last-child,
 .blog__pagination a:last-child {
 	margin-right: 0;
-}
+} */
 
 /*---------------------
   Shop Details

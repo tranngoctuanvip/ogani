@@ -85,11 +85,16 @@ function selectProduct(data){
 }
 
 function unpaid(callback){
-    fetch(unpaidApi)
-    .then(function(response){
-        return response.json();
-    })
-    .then(callback)
+    if(token){
+        fetch(unpaidApi,{
+            method: 'GET',
+            headers: {'Authorization' : 'Bearer ' + token}
+        })
+        .then(function(response){
+            return response.json();
+        })
+        .then(callback)
+    }  
 }
 
 function selectUnpaid(data){

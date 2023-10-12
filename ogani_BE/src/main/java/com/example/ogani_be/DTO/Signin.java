@@ -11,6 +11,7 @@ public class Signin {
     private String username;
     private String password;
     private String token;
+    private String name;
     private String type = "Bearer";
     private Collection<? extends GrantedAuthority> role;
 }

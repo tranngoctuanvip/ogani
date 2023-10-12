@@ -1,6 +1,7 @@
-var productApiGetall = 'http://localhost:8088/product/getAll';
+// var productApiGetall = 'http://localhost:8088/product/getAll';
 var apiUrl  ='http://localhost:8088/product/getProduct';
-const productsPerPage = 6; // Số sản phẩm hiển thị trên mỗi trang
+
+const curentSize = 6; // Số sản phẩm hiển thị trên mỗi trang
 let currentPage = 0; // Trang hiện tại
 var sortType = 'desc';
 var sortBy = 'id'
@@ -9,7 +10,7 @@ function start(){
     getProduct(function(res) {
       getProducts1(res?.data || []);
       const total = res.total;
-      listPage(currentPage,productsPerPage,total);
+      listPage(currentPage,curentSize,total);
       // changePage();
     });
     // getSale(function(res){
@@ -19,45 +20,43 @@ function start(){
 }
 start();
 
+var unpaidApi = 'http://localhost:8088/cart/unpaid';
+
+function unpaids(){
+    unpaid(function(res){
+        selectUnpaid(res?.data || [])
+    })
+}
+unpaids();
+
+function unpaid(callback){
+    if(token){
+        fetch(unpaidApi,{
+            headers: {'Authorization' : 'Bearer ' + token }
+        })
+        .then(function(response){
+            return response.json();
+        })
+        .then(callback)
+    }
+   
+}
+
+function selectUnpaid(data){
+    var selectUnpaids = document.querySelector('#unpaid');
+    var htmls = data.map(function(elem){
+        return `<i class="fa fa-shopping-bag"></i> <span>${elem.unpaid}</span>`;
+    }).join('');
+    selectUnpaids.innerHTML = htmls;
+}
+
 function getProduct(callback){
-    const url = `${apiUrl}?page=${currentPage}&size=${productsPerPage}&sortType=${sortType}&sortBy=${sortBy}`;
+    const url = `${apiUrl}?page=${currentPage}&size=${curentSize}&sortType=${sortType}&sortBy=${sortBy}`;
     fetch(url)
     .then(function(response){
         return response.json();
     })
     .then(callback);
-}
-
-function getSale(callback){
-  fetch(productApiGetall)
-  .then(function(response){
-    return response.json();
-  }).then(callback)
-}
-
-function sale(data){
-  var sales = document.querySelectorAll('.product__discount__slider.owl-carousel');
-  var htmls= data.map(function(elem){
-    return `  <div class="col-lg-4">
-    <div class="product__discount__item">
-        <div class="product__discount__item__pic set-bg"
-            data-setbg="${elem.image}">
-            <div class="product__discount__percent">-20%</div>
-            <ul class="product__item__pic__hover">
-                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-            </ul>
-        </div>
-        <div class="product__discount__item__text">
-            <span>${elem.name}</span>
-            <h5><a href="#">${elem.name}</a></h5>
-            <div class="product__item__price">${elem.price}<span>$36.00</span></div>
-        </div>
-    </div>
-</div>`
-  }).join('');
-  sales.innerHTML = htmls;
 }
 
 function createCart(id){
@@ -72,11 +71,11 @@ function createCart(id){
         headers: headers
     })
     .then(response => response.json())
-    // .then(data => {
-    //   // Xử lý dữ liệu từ API
-    //   console.log(data);
-      
-    // })
+    .then(data => {
+      // Xử lý dữ liệu từ API
+      console.log(data);
+      unpaids();
+    })
     .catch(error => {
       // Xử lý lỗi
       console.error(error);
@@ -113,42 +112,43 @@ function getProducts1(data){
 
 
   // Hàm cập nhật phân trang
-  function listPage(currentPage, pageSize, total) {
-    const pageCount = Math.ceil(total / pageSize);
-    const paginationContainer = document.querySelector('#paging');
-    paginationContainer.innerHTML = '';
-  
-    if (currentPage >= 0) {
-      createPageLink('PREV', currentPage - 1);
-    }
-  
-    for (let i = 1; i <= pageCount; i++) {
-      createPageLink(i, i);
-    }
-  
-    if (currentPage < pageCount) {
-      createPageLink('NEXT', currentPage + 1);
-    }
-  
-    function createPageLink(text, page) {
-      const pageLink = document.createElement('li');
-      pageLink.classList.add('page-link');
-      const link = document.createElement('a');
-      link.innerText = text;
-      link.href = '#';
-      link.setAttribute('onclick', `changePage(${page})`);
-      if (currentPage === page) {
-        pageLink.classList.add('active');
-      }
-      pageLink.appendChild(link);
-      paginationContainer.appendChild(pageLink);
-    }
+function listPage(currentPage, pageSize, total) {
+  const pageCount = Math.ceil(total / pageSize);
+  const paginationContainer = document.querySelector('.pagination');
+  paginationContainer.innerHTML = '';
+
+  if (currentPage >= 1) {
+    createPageLink('PREV', currentPage - 1);
   }
-  
-  function changePage(page) {
-    currentPage = page;
-    start();
+
+  for (let i = 1; i <= pageCount; i++) {
+    createPageLink(i, i);
   }
+
+  if (currentPage < pageCount) {
+    createPageLink('NEXT', currentPage + 1);
+  }
+
+  function createPageLink(text, page) {
+    const pageLink = document.createElement('button');
+    pageLink.classList.add('page-link');
+    const link = document.createElement('a');
+    link.innerText = text;
+    link.href = '#';
+    link.setAttribute('onclick', `changePage(${page})`);
+    if (currentPage === page) {
+      pageLink.classList.add('active');
+    }
+    pageLink.appendChild(link);
+    paginationContainer.appendChild(pageLink);
+  }
+}
+
+
+function changePage(page) {
+  currentPage = page;
+  start();
+}
 
 
 
